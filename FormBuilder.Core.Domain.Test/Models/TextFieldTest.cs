@@ -4,7 +4,7 @@ using Xunit;
 
 namespace FormBuilder.Core.Domain.Test.Models
 {
-    public class FieldTest
+    public class TextFieldTest
     {
 
         [Fact]
