@@ -11,7 +11,7 @@ namespace FormBuilder.Core.Domain.Test.Models
         public void TextField_Success()
         {
             //arrange
-            TextField tField = new TextField("Name", 20, 5, false);
+            TextField tField = new TextField("Name", 5, 20, false);
             tField.SetValue("Testing field");
 
             //act
@@ -127,7 +127,7 @@ namespace FormBuilder.Core.Domain.Test.Models
         public void TextField_CreateNewField_ResultTrue()
         {
             //arrange
-            TextField tField = new TextField("nome", 10, 5, true);
+            TextField tField = new TextField("nome", 5, 10, true);
             tField.SetValue("teste");
 
             //act

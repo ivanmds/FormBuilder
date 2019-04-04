@@ -7,9 +7,18 @@ namespace FormBuilder.Core.Domain.Validations
     {
         public TextFieldValidation()
         {
+            ValidateName();
             ValidateIsRequired();
             ValidateMinLenght();
             ValidateMaxLenght();
+        }
+
+        private void ValidateName()
+        {
+            RuleFor(p => p.Name)
+                .NotNull()
+                .NotEmpty()
+                .WithMessage("Name is required.");
         }
 
         private void ValidateIsRequired()
