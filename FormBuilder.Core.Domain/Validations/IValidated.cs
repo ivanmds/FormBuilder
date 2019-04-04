@@ -1,7 +1,9 @@
-﻿namespace FormBuilder.Core.Domain.Validations
+﻿using FluentValidation.Results;
+
+namespace FormBuilder.Core.Domain.Validations
 {
     public interface IValidated
     {
-        bool IsValid();
+        ValidationResult IsValid();
     }
 }

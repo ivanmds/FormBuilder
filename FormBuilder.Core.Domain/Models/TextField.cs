@@ -1,5 +1,5 @@
-﻿using FormBuilder.Core.Domain.Validations;
-using System;
+﻿using FluentValidation.Results;
+using FormBuilder.Core.Domain.Validations;
 
 namespace FormBuilder.Core.Domain.Models
 {
@@ -10,7 +10,7 @@ namespace FormBuilder.Core.Domain.Models
             Name = name;
             MaxLength = maxLength;
             MinLength = minLength;
-            IsRequired = IsRequired;
+            IsRequired = isRequired;
             Placeholder = placeholder;
         }
 
@@ -19,9 +19,16 @@ namespace FormBuilder.Core.Domain.Models
         public bool? IsRequired { get; private set; }
         public string Placeholder { get; private set; }
 
-        public bool IsValid()
+        public override void SetValue(string value)
         {
-            return false;
+            if (value != null) value = value.Trim();
+            base.SetValue(value);
+        }
+
+        public ValidationResult IsValid()
+        {
+            ValidationResult result = new TextFieldValidation().Validate(this);
+            return result;
         }
     }
 }
