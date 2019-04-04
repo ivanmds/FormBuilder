@@ -7,6 +7,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{ECA5FA
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormBuilder.Core.Domain", "FormBuilder.Core.Domain\FormBuilder.Core.Domain.csproj", "{6D43ECAC-0227-4CF9-BD1D-591602ECA381}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{F7DD4955-4C72-49B8-A2B5-F180BF47CD06}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormBuilder.Core.Domain.Test", "FormBuilder.Core.Domain.Test\FormBuilder.Core.Domain.Test.csproj", "{50989843-9F44-4714-80DE-552A20793EE6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,12 +21,18 @@ Global
 		{6D43ECAC-0227-4CF9-BD1D-591602ECA381}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6D43ECAC-0227-4CF9-BD1D-591602ECA381}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6D43ECAC-0227-4CF9-BD1D-591602ECA381}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50989843-9F44-4714-80DE-552A20793EE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50989843-9F44-4714-80DE-552A20793EE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50989843-9F44-4714-80DE-552A20793EE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50989843-9F44-4714-80DE-552A20793EE6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{ECA5FAEC-2CED-4685-A03F-E5C7F0B2B51F} = {F7DD4955-4C72-49B8-A2B5-F180BF47CD06}
 		{6D43ECAC-0227-4CF9-BD1D-591602ECA381} = {ECA5FAEC-2CED-4685-A03F-E5C7F0B2B51F}
+		{50989843-9F44-4714-80DE-552A20793EE6} = {ECA5FAEC-2CED-4685-A03F-E5C7F0B2B51F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C605085B-E87D-4971-AF76-DEBFF4CAE440}
