@@ -110,7 +110,7 @@ namespace FormBuilder.Core.Domain.Test.Models
         [InlineData("12345678910")]
         [InlineData("1234567891011")]
         [InlineData("123456789101112")]
-        public void extField_MaxLenght_ResultFalse(string value)
+        public void TextField_MaxLenght_ResultFalse(string value)
         {
             //arrange
             TextField tField = new TextField("nome", maxLength: 10);
