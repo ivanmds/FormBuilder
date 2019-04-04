@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
-using FormBuilder.Core.Domain.Models;
+using FormBuilder.Core.Domain.Models.Fields.Texts;
 
-namespace FormBuilder.Core.Domain.Validations
+namespace FormBuilder.Core.Domain.Validations.Fields.Texts
 {
     public class TextFieldValidation : AbstractValidator<TextField>
     {

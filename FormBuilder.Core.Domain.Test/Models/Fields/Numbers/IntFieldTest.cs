@@ -1,8 +1,8 @@
-﻿using FluentValidation.Results;
-using FormBuilder.Core.Domain.Models.Numbers;
-using Xunit;
+﻿using Xunit;
+using FluentValidation.Results;
+using FormBuilder.Core.Domain.Models.Fields.Numbers;
 
-namespace FormBuilder.Core.Domain.Test.Models
+namespace FormBuilder.Core.Domain.Test.Models.Fields.Numbers
 {
     public class IntFieldTest
     {

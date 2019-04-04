@@ -1,4 +1,4 @@
-﻿namespace FormBuilder.Core.Domain.Models.Numbers
+﻿namespace FormBuilder.Core.Domain.Models.Fields.Numbers
 {
     public abstract class NumberField<TValue> : BaseField<TValue>
     {

@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
-using FormBuilder.Core.Domain.Models.Numbers;
+using FormBuilder.Core.Domain.Models.Fields.Numbers;
 
-namespace FormBuilder.Core.Domain.Validations.Numbers
+namespace FormBuilder.Core.Domain.Validations.Fields.Numbers
 {
     public class IntFieldValidation : AbstractValidator<IntField>
     {

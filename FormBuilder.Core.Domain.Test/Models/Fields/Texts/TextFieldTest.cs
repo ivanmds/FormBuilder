@@ -1,8 +1,8 @@
-﻿using FluentValidation.Results;
-using FormBuilder.Core.Domain.Models;
-using Xunit;
+﻿using Xunit;
+using FluentValidation.Results;
+using FormBuilder.Core.Domain.Models.Fields.Texts;
 
-namespace FormBuilder.Core.Domain.Test.Models
+namespace FormBuilder.Core.Domain.Test.Models.Fields.Texts
 {
     public class TextFieldTest
     {

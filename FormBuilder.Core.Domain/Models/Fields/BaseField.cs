@@ -1,6 +1,6 @@
 ﻿using FluentValidation.Results;
 
-namespace FormBuilder.Core.Domain.Models
+namespace FormBuilder.Core.Domain.Models.Fields
 {
     public abstract class BaseField<TValue>
     {

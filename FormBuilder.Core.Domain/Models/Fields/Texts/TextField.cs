@@ -1,7 +1,7 @@
 ﻿using FluentValidation.Results;
-using FormBuilder.Core.Domain.Validations;
+using FormBuilder.Core.Domain.Validations.Fields.Texts;
 
-namespace FormBuilder.Core.Domain.Models
+namespace FormBuilder.Core.Domain.Models.Fields.Texts
 {
     public class TextField : BaseField<string>
     {

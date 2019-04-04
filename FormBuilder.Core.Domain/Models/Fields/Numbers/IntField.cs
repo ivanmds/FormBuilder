@@ -1,7 +1,7 @@
 ﻿using FluentValidation.Results;
-using FormBuilder.Core.Domain.Validations.Numbers;
+using FormBuilder.Core.Domain.Validations.Fields.Numbers;
 
-namespace FormBuilder.Core.Domain.Models.Numbers
+namespace FormBuilder.Core.Domain.Models.Fields.Numbers
 {
     public class IntField : NumberField<int?>
     {
