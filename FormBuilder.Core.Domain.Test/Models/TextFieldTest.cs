@@ -8,7 +8,7 @@ namespace FormBuilder.Core.Domain.Test.Models
     {
 
         [Fact]
-        public void FieldTest_TextField_Success()
+        public void TextField_Success()
         {
             //arrange
             TextField tField = new TextField("Name", 20, 5, false);
@@ -25,7 +25,7 @@ namespace FormBuilder.Core.Domain.Test.Models
         [InlineData("t")]
         [InlineData("t 1")]
         [InlineData("t 1 2345679")]
-        public void FieldTest_TextField_IsRequired_ResultTrue(string value)
+        public void TextField_IsRequired_ResultTrue(string value)
         {
             //arrange
             TextField tField = new TextField("nome", isRequired: true);
@@ -42,7 +42,7 @@ namespace FormBuilder.Core.Domain.Test.Models
         [InlineData("")]
         [InlineData(null)]
         [InlineData(" ")]
-        public void FieldTest_TextField_IsRequired_ResultFalse(string value)
+        public void TextField_IsRequired_ResultFalse(string value)
         {
             //arrange
             TextField tField = new TextField("nome", isRequired: true);
@@ -59,7 +59,7 @@ namespace FormBuilder.Core.Domain.Test.Models
         [InlineData("123")]
         [InlineData("123456")]
         [InlineData("123456789")]
-        public void FieldTest_TextField_MinLenght_ResultTrue(string value)
+        public void TextField_MinLenght_ResultTrue(string value)
         {
             //arrange
             TextField tField = new TextField("nome", minLength: 3);
@@ -76,7 +76,7 @@ namespace FormBuilder.Core.Domain.Test.Models
         [InlineData("12")]
         [InlineData("1")]
         [InlineData("")]
-        public void FieldTest_TextField_MinLenght_ResultFalse(string value)
+        public void TextField_MinLenght_ResultFalse(string value)
         {
             //arrange
             TextField tField = new TextField("nome", minLength: 3);
@@ -93,7 +93,7 @@ namespace FormBuilder.Core.Domain.Test.Models
         [InlineData("123")]
         [InlineData("123456")]
         [InlineData("123456789")]
-        public void FieldTest_TextField_MaxLenght_ResultTrue(string value)
+        public void TextField_MaxLenght_ResultTrue(string value)
         {
             //arrange
             TextField tField = new TextField("nome", maxLength: 10);
@@ -110,7 +110,7 @@ namespace FormBuilder.Core.Domain.Test.Models
         [InlineData("12345678910")]
         [InlineData("1234567891011")]
         [InlineData("123456789101112")]
-        public void FieldTest_TextField_MaxLenght_ResultFalse(string value)
+        public void extField_MaxLenght_ResultFalse(string value)
         {
             //arrange
             TextField tField = new TextField("nome", maxLength: 10);
@@ -124,7 +124,7 @@ namespace FormBuilder.Core.Domain.Test.Models
         }
 
         [Fact]
-        public void FieldText_TextField_CreateNewField_ResultTrue()
+        public void TextField_CreateNewField_ResultTrue()
         {
             //arrange
             TextField tField = new TextField("nome", 10, 5, true);
