@@ -13,12 +13,12 @@ namespace FormBuilder.Core.Domain.Services.Forms
             _repository = repository;
         }
 
-        public void Add(FBuilder fBuilder)
+        public void Add(FormBuild fBuilder)
         {
             _repository.Add(fBuilder);
         }
 
-        public void Update(FBuilder fBuilder)
+        public void Update(FormBuild fBuilder)
         {
             throw new System.NotImplementedException();
         }

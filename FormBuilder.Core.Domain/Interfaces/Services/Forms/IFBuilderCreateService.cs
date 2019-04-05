@@ -4,7 +4,7 @@ namespace FormBuilder.Core.Domain.Interfaces.Services.Forms
 {
     public interface IFBuilderCreateService
     {
-        void Add(FBuilder fBuilder);
-        void Update(FBuilder fBuilder);
+        void Add(FormBuild fBuilder);
+        void Update(FormBuild fBuilder);
     }
 }

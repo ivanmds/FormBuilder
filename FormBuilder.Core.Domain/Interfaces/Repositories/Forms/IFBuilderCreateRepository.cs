@@ -4,6 +4,6 @@ namespace FormBuilder.Core.Domain.Interfaces.Repositories.Forms
 {
     public interface IFBuilderCreateRepository
     {
-        void Add(FBuilder fBuilder);
+        void Add(FormBuild fBuilder);
     }
 }
