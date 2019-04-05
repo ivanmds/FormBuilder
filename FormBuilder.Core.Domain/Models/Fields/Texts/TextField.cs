@@ -3,7 +3,7 @@ using FormBuilder.Core.Domain.Validations.Fields.Texts;
 
 namespace FormBuilder.Core.Domain.Models.Fields.Texts
 {
-    public class TextField : BaseField<string>
+    public class TextField : Field<string>
     {
         public TextField(string name, int? minLength = null, int? maxLength = null, bool? isRequired = null, string placeholder = null)
         {
@@ -24,7 +24,7 @@ namespace FormBuilder.Core.Domain.Models.Fields.Texts
             base.SetValue(value);
         }
 
-        public override ValidationResult IsValid()
+        public override ValidationResult Validate()
         {
             return new TextFieldValidation().Validate(this);
         }

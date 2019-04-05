@@ -13,7 +13,7 @@ namespace FormBuilder.Core.Domain.Models.Fields.Numbers
             IsRequired = isRequired;
         }
 
-        public override ValidationResult IsValid()
+        public override ValidationResult Validate()
         {
             return new IntFieldValidation().Validate(this);
         }

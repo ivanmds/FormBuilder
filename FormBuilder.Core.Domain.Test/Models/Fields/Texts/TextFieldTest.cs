@@ -15,7 +15,7 @@ namespace FormBuilder.Core.Domain.Test.Models.Fields.Texts
             tField.SetValue("Testing field");
 
             //act
-            ValidationResult result = tField.IsValid();
+            ValidationResult result = tField.Validate();
 
             //assert
             Assert.True(result.IsValid, "Regras não estão ok.");
@@ -32,7 +32,7 @@ namespace FormBuilder.Core.Domain.Test.Models.Fields.Texts
             tField.SetValue(value);
 
             //act
-            ValidationResult result = tField.IsValid();
+            ValidationResult result = tField.Validate();
 
             //assert
             Assert.True(result.IsValid, "Regras não estão ok.");
@@ -49,7 +49,7 @@ namespace FormBuilder.Core.Domain.Test.Models.Fields.Texts
             tField.SetValue(value);
 
             //act
-            ValidationResult result = tField.IsValid();
+            ValidationResult result = tField.Validate();
 
             //assert
             Assert.False(result.IsValid, "Regras não estão ok.");
@@ -66,7 +66,7 @@ namespace FormBuilder.Core.Domain.Test.Models.Fields.Texts
             tField.SetValue(value);
 
             //act
-            ValidationResult result = tField.IsValid();
+            ValidationResult result = tField.Validate();
 
             //assert
             Assert.True(result.IsValid, "Regras não estão ok.");
@@ -83,7 +83,7 @@ namespace FormBuilder.Core.Domain.Test.Models.Fields.Texts
             tField.SetValue(value);
 
             //act
-            ValidationResult result = tField.IsValid();
+            ValidationResult result = tField.Validate();
 
             //assert
             Assert.False(result.IsValid, "Regras não estão ok.");
@@ -100,7 +100,7 @@ namespace FormBuilder.Core.Domain.Test.Models.Fields.Texts
             tField.SetValue(value);
 
             //act
-            ValidationResult result = tField.IsValid();
+            ValidationResult result = tField.Validate();
 
             //assert
             Assert.True(result.IsValid, "Regras não estão ok.");
@@ -117,7 +117,7 @@ namespace FormBuilder.Core.Domain.Test.Models.Fields.Texts
             tField.SetValue(value);
 
             //act
-            ValidationResult result = tField.IsValid();
+            ValidationResult result = tField.Validate();
 
             //assert
             Assert.False(result.IsValid, "Regras não estão ok.");
@@ -131,7 +131,7 @@ namespace FormBuilder.Core.Domain.Test.Models.Fields.Texts
             tField.SetValue("teste");
 
             //act
-            ValidationResult result = tField.IsValid();
+            ValidationResult result = tField.Validate();
 
             //assert
             Assert.True(result.IsValid, "Regras não estão ok.");

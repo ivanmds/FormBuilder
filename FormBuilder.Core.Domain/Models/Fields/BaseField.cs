@@ -1,17 +1,12 @@
 ﻿using FluentValidation.Results;
+using FormBuilder.Core.Domain.Interfaces.Validation;
 
 namespace FormBuilder.Core.Domain.Models.Fields
 {
-    public abstract class BaseField<TValue>
+    public abstract class BaseField : IValidable
     {
         public string Name { get; protected set; }
-        public TValue Value { get; protected set; }
         public bool? IsRequired { get; protected set; }
-        public virtual void SetValue(TValue value)
-        {
-            Value = value;
-        }
-
-        public abstract ValidationResult IsValid();
+        public abstract ValidationResult Validate();
     }
 }
