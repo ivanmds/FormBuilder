@@ -13,8 +13,9 @@ namespace FormBuilder.Core.Domain.Models.Forms
 
         public bool AddField(int index, BaseField field)
         {
+            if (index <= 0) throw new ArgumentException("Index invalid.");
+            if (field == null) throw new ArgumentException("field not null.");
             if (_fields.ContainsKey(index)) return false;
-            if (field == null) throw new NullReferenceException("field not null.");
 
             _fields.Add(index, field);
             return true;
