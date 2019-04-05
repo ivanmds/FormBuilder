@@ -1,51 +1,51 @@
 ﻿using Xunit;
 using System;
 using FluentValidation.Results;
+using FormBuilder.Core.Domain.Models.Forms.Response;
 using FormBuilder.Core.Domain.Models.Fields.Numbers;
 using FormBuilder.Core.Domain.Models.Fields.Texts;
-using FormBuilder.Core.Domain.Models.Forms;
 
-namespace FormBuilder.Core.Domain.Test.Models.Forms
+namespace Form.Core.Domain.Test.Models.Forms
 {
-    public class FBuilderTest
+    public class FormResponseTest
     {
         [Fact]
-        public void FormBuilder_Success()
+        public void FormResponse_Success()
         {
             //arrange
-            FBuilder fBuilder = new FBuilder("Teste", DateTime.Now);
+            FormResponse FormResponse = new FormResponse("Teste", DateTime.Now);
 
             //act
-            ValidationResult result = fBuilder.Validate();
+            ValidationResult result = FormResponse.Validate();
 
             //assert
             Assert.True(result.IsValid, "Formulário não está válido");
         }
 
         [Fact]
-        public void FormBuilder_AddFiledInvalid_ResultFalse()
+        public void FormResponse_AddFiledInvalid_ResultFalse()
         {
             //arrange
-            FBuilder fBuilder = new FBuilder("Teste", DateTime.Now);
+            FormResponse FormResponse = new FormResponse("Teste", DateTime.Now);
             
             IntField intField = new IntField("value_test", 5, 10, true);
             //set value invalid
             intField.SetValue(11);
 
-            fBuilder.AddField(1, intField);
+            FormResponse.AddField(1, intField);
 
             //act
-            ValidationResult result = fBuilder.Validate();
+            ValidationResult result = FormResponse.Validate();
 
             //assert
             Assert.False(result.IsValid, "Formulário não está válido");
         }
 
         [Fact]
-        public void FormBuilder_AddFiledValidAndInvalid_ResultFalse()
+        public void FormResponse_AddFiledValidAndInvalid_ResultFalse()
         {
             //arrange
-            FBuilder fBuilder = new FBuilder("Teste", DateTime.Now);
+            FormResponse FormResponse = new FormResponse("Teste", DateTime.Now);
 
             IntField intField = new IntField("value_test", 5, 10, true);
             //set value invalid
@@ -54,21 +54,21 @@ namespace FormBuilder.Core.Domain.Test.Models.Forms
             TextField textField = new TextField("text");
             textField.SetValue("valid");
 
-            fBuilder.AddField(1, intField);
-            fBuilder.AddField(1, textField);
+            FormResponse.AddField(1, intField);
+            FormResponse.AddField(1, textField);
 
             //act
-            ValidationResult result = fBuilder.Validate();
+            ValidationResult result = FormResponse.Validate();
 
             //assert
             Assert.False(result.IsValid, "Formulário não está válido");
         }
 
         [Fact]
-        public void FormBuilder_AddFiledsValid_ResultTrue()
+        public void FormResponse_AddFiledsValid_ResultTrue()
         {
             //arrange
-            FBuilder fBuilder = new FBuilder("Teste", DateTime.Now);
+            FormResponse FormResponse = new FormResponse("Teste", DateTime.Now);
 
             IntField intField = new IntField("value_test", 5, 10, true);
             //set value valid
@@ -77,70 +77,70 @@ namespace FormBuilder.Core.Domain.Test.Models.Forms
             TextField textField = new TextField("text");
             textField.SetValue("valid");
 
-            fBuilder.AddField(1, intField);
-            fBuilder.AddField(1, textField);
+            FormResponse.AddField(1, intField);
+            FormResponse.AddField(1, textField);
 
             //act
-            ValidationResult result = fBuilder.Validate();
+            ValidationResult result = FormResponse.Validate();
 
             //assert
             Assert.True(result.IsValid, "Formulário não está válido");
         }
 
         [Fact]
-        public void FormBuilder_AddNewIndex_ResultTrue()
+        public void FormResponse_AddNewIndex_ResultTrue()
         {
             //arrange
-            FBuilder fBuilder = new FBuilder("Teste", DateTime.Now);
+            FormResponse FormResponse = new FormResponse("Teste", DateTime.Now);
             TextField textField = new TextField("text");
             textField.SetValue("valid");
 
             //act
-            bool indexAdd = fBuilder.AddField(1, textField);
+            bool indexAdd = FormResponse.AddField(1, textField);
 
             //assert
             Assert.True(indexAdd);
         }
 
         [Fact]
-        public void FormBuilder_AddIndexAlreadyExisting_ResultFalse()
+        public void FormResponse_AddIndexAlreadyExisting_ResultFalse()
         {
             //arrange
             int index = 1;
-            FBuilder fBuilder = new FBuilder("Teste", DateTime.Now);
+            FormResponse FormResponse = new FormResponse("Teste", DateTime.Now);
             TextField textField = new TextField("text");
             textField.SetValue("valid");
-            fBuilder.AddField(index, textField);
+            FormResponse.AddField(index, textField);
 
             //act
-            bool indexAdd = fBuilder.AddField(index, textField);
+            bool indexAdd = FormResponse.AddField(index, textField);
 
             //assert
             Assert.False(indexAdd);
         }
 
         [Fact]
-        public void FormBuilder_IndexEqualZeroOrLowerZero_ThrowArgumentException()
+        public void FormResponse_IndexEqualZeroOrLowerZero_ThrowArgumentException()
         {
             //arrange
             int index = 0;
-            FBuilder fBuilder = new FBuilder("Teste", DateTime.Now);
+            FormResponse FormResponse = new FormResponse("Teste", DateTime.Now);
             TextField textField = new TextField("text");
             textField.SetValue("valid");
 
             //act and assert
-            Assert.Throws<ArgumentException>(() => fBuilder.AddField(index, textField));
+            Assert.Throws<ArgumentException>(() => FormResponse.AddField(index, textField));
         }
 
         [Fact]
-        public void FormBuilder_FieldEqualNull_ThrowArgumentException()
+        public void FormResponse_FieldEqualNull_ThrowArgumentException()
         {
             //arrange
-            FBuilder fBuilder = new FBuilder("Teste", DateTime.Now);
+            FormResponse FormResponse = new FormResponse("Teste", DateTime.Now);
             TextField textField = null;
 
             //act and assert
-            Assert.Throws<ArgumentException>(() => fBuilder.AddField(1, textField));
+            Assert.Throws<ArgumentException>(() => FormResponse.AddField(1, textField));
         }
     }
 }

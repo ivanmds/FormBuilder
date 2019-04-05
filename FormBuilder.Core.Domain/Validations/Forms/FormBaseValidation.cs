@@ -1,11 +1,11 @@
 ﻿using FluentValidation;
-using FormBuilder.Core.Domain.Models.Forms;
+using FormBuilder.Core.Domain.Models.Forms.Builder;
 
 namespace FormBuilder.Core.Domain.Validations.Forms
 {
-    public class FBuilderValidation : AbstractValidator<FBuilder>
+    public class FormBaseValidation : AbstractValidator<FormBase>
     {
-        public FBuilderValidation()
+        public FormBaseValidation()
         {
             RuleFor(p => p.Name)
                 .NotEmpty()

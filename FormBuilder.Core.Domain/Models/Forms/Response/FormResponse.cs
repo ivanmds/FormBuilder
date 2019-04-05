@@ -3,23 +3,19 @@ using FluentValidation.Results;
 using System.Collections.Generic;
 using FormBuilder.Core.Domain.Validations.Forms;
 
-namespace FormBuilder.Core.Domain.Models.Forms
+namespace FormBuilder.Core.Domain.Models.Forms.Response
 {
-    public class FBuilder : FBuilderBase
+    public class FormResponse : FormResponseBase
     {
-        public FBuilder(string name, DateTime expiredIn)
+        public FormResponse(string name, DateTime expiredIn)
         {
             Name = name;
             ExpiredIn = expiredIn;
         }
 
-        public string Name { get; private set; }
-        public DateTime ExpiredIn { get; private set; }
-        public bool IsActive => ExpiredIn > DateTime.Now;
-
         public override ValidationResult Validate()
         {
-            ValidationResult fBuilderValidation = new FBuilderValidation().Validate(this);
+            ValidationResult fBuilderValidation = new FormBaseValidation().Validate(this);
             List<ValidationFailure> fieldValidations = GetFieldsValidate();
 
             if (!fBuilderValidation.IsValid)
