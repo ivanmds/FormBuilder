@@ -1,6 +1,7 @@
 ﻿using Xunit;
 using FluentValidation.Results;
-using FormBuilder.Core.Domain.Models.Fields.Numbers;
+using FormBuilder.Core.Domain.Models.Fields.Response.Numbers;
+using FormBuilder.Core.Domain.Models.Fields.Builder.Numbers;
 
 namespace FormBuilder.Core.Domain.Test.Models.Fields.Numbers
 {
@@ -10,11 +11,12 @@ namespace FormBuilder.Core.Domain.Test.Models.Fields.Numbers
         public void IntField_Success()
         {
             //arrange
-            IntField intField = new IntField("idade", 10, 20, false);
-            intField.SetValue(12);
+            IntFieldBuilder intField = new IntFieldBuilder("idade", 10, 20, false);
+            IntFieldResponse fieldResponse = new IntFieldResponse(intField);
+            fieldResponse.SetValue(12);
 
             //act
-            ValidationResult result = intField.Validate();
+            ValidationResult result = fieldResponse.Validate();
 
             //assert
             Assert.True(result.IsValid, "Regras não estão ok.");
@@ -27,11 +29,12 @@ namespace FormBuilder.Core.Domain.Test.Models.Fields.Numbers
         public void IntField_IsRequiresTrue_ResultTrue(int value)
         {
             //arrange
-            IntField intField = new IntField("value_test", isRequired: true);
-            intField.SetValue(value);
+            IntFieldBuilder intField = new IntFieldBuilder("value_test", isRequired: true);
+            IntFieldResponse fieldResponse = new IntFieldResponse(intField);
+            fieldResponse.SetValue(value);
 
             //act
-            ValidationResult result = intField.Validate();
+            ValidationResult result = fieldResponse.Validate();
 
             //assert
             Assert.True(result.IsValid, "Regras do isRequired não estão ok.");
@@ -41,10 +44,11 @@ namespace FormBuilder.Core.Domain.Test.Models.Fields.Numbers
         public void IntField_IsRequiresTrue_ResultFalse()
         {
             //arrange
-            IntField intField = new IntField("value_test", isRequired: true);
+            IntFieldBuilder intField = new IntFieldBuilder("value_test", isRequired: true);
+            IntFieldResponse fieldResponse = new IntFieldResponse(intField);
 
             //act
-            ValidationResult result = intField.Validate();
+            ValidationResult result = fieldResponse.Validate();
 
             //assert
             Assert.False(result.IsValid, "Regras do IsRequires não estão ok.");
@@ -57,11 +61,12 @@ namespace FormBuilder.Core.Domain.Test.Models.Fields.Numbers
         public void IntField_MinValue_ResultTrue(int value)
         {
             //arrange
-            IntField intField = new IntField("value_test", minValue: 2);
-            intField.SetValue(value);
+            IntFieldBuilder intField = new IntFieldBuilder("value_test", minValue: 2);
+            IntFieldResponse fieldResponse = new IntFieldResponse(intField);
+            fieldResponse.SetValue(value);
 
             //act
-            ValidationResult result = intField.Validate();
+            ValidationResult result = fieldResponse.Validate();
 
             //assert
             Assert.True(result.IsValid, "Regras do MinValue não estão ok.");
@@ -74,11 +79,12 @@ namespace FormBuilder.Core.Domain.Test.Models.Fields.Numbers
         public void IntField_MinValue_ResultFalse(int value)
         {
             //arrange
-            IntField intField = new IntField("value_test", minValue: 2);
-            intField.SetValue(value);
+            IntFieldBuilder intField = new IntFieldBuilder("value_test", minValue: 2);
+            IntFieldResponse fieldResponse = new IntFieldResponse(intField);
+            fieldResponse.SetValue(value);
 
             //act
-            ValidationResult result = intField.Validate();
+            ValidationResult result = fieldResponse.Validate();
 
             //assert
             Assert.False(result.IsValid, "Regras do MinValue não estão ok.");
@@ -91,11 +97,12 @@ namespace FormBuilder.Core.Domain.Test.Models.Fields.Numbers
         public void IntField_MaxValue_ResultTrue(int value)
         {
             //arrange
-            IntField intField = new IntField("value_test", maxValue: 10);
-            intField.SetValue(value);
+            IntFieldBuilder intField = new IntFieldBuilder("value_test", maxValue: 10);
+            IntFieldResponse fieldResponse = new IntFieldResponse(intField);
+            fieldResponse.SetValue(value);
 
             //act
-            ValidationResult result = intField.Validate();
+            ValidationResult result = fieldResponse.Validate();
 
             //assert
             Assert.True(result.IsValid, "Regras do MinValue não estão ok.");
@@ -108,11 +115,12 @@ namespace FormBuilder.Core.Domain.Test.Models.Fields.Numbers
         public void IntField_MaxValue_ResultFalse(int value)
         {
             //arrange
-            IntField intField = new IntField("value_test", maxValue: 10);
-            intField.SetValue(value);
+            IntFieldBuilder intField = new IntFieldBuilder("value_test", maxValue: 10);
+            IntFieldResponse fieldResponse = new IntFieldResponse(intField);
+            fieldResponse.SetValue(value);
 
             //act
-            ValidationResult result = intField.Validate();
+            ValidationResult result = fieldResponse.Validate();
 
             //assert
             Assert.False(result.IsValid, "Regras do MinValue não estão ok.");
@@ -128,11 +136,12 @@ namespace FormBuilder.Core.Domain.Test.Models.Fields.Numbers
         public void TextField_CreateNewField_ResultTrue(int value)
         {
             //arrange
-            IntField intField = new IntField("value_test", 5, 10, true);
-            intField.SetValue(value);
+            IntFieldBuilder intField = new IntFieldBuilder("value_test", 5, 10, true);
+            IntFieldResponse fieldResponse = new IntFieldResponse(intField);
+            fieldResponse.SetValue(value);
 
             //act
-            ValidationResult result = intField.Validate();
+            ValidationResult result = fieldResponse.Validate();
 
             //assert
             Assert.True(result.IsValid, "Regras do MinValue não estão ok.");

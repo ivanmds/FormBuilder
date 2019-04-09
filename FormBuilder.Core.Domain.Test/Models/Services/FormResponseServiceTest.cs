@@ -4,10 +4,13 @@ using NSubstitute;
 using System.Threading.Tasks;
 using FluentValidation.Results;
 using FormBuilder.Core.Domain.Services.Forms;
-using FormBuilder.Core.Domain.Models.Fields.Texts;
-using FormBuilder.Core.Domain.Models.Fields.Numbers;
 using FormBuilder.Core.Domain.Models.Forms.Response;
 using FormBuilder.Core.Domain.Interfaces.Repositories.Forms;
+using FormBuilder.Core.Domain.Models.Fields.Builder.Numbers;
+using FormBuilder.Core.Domain.Models.Fields.Builder.Texts;
+using FormBuilder.Core.Domain.Models.Forms;
+using FormBuilder.Core.Domain.Models.Fields.Response.Texts;
+using FormBuilder.Core.Domain.Models.Fields.Response.Numbers;
 
 namespace FormBuilder.Core.Domain.Test.Models.Services
 {
@@ -26,18 +29,22 @@ namespace FormBuilder.Core.Domain.Test.Models.Services
         public async Task FormResponseService_AddFormResponseValid_ResultValid()
         {
             //arrange
-            FormResponse formResponse = new FormResponse("Teste", DateTime.Now);
+            FormBuild formBuild = new FormBuild("Teste", DateTime.Now);
+            TextFieldBuilder textField = new TextFieldBuilder("text");
+            IntFieldBuilder intField = new IntFieldBuilder("value_test", 5, 10, true);
+            formBuild.AddField(textField);
+            formBuild.AddField(intField);
 
-            IntField intField = new IntField("value_test", 5, 10, true);
-            intField.SetValue(10);
+            FormResponse formResponse = new FormResponse(formBuild);
 
-            TextField textField = new TextField("text");
-            textField.SetValue("valid");
+            TextFieldResponse textResponse = new TextFieldResponse(textField);
+            textResponse.SetValue("valid");
 
-            formResponse.AddField(intField);
-            formResponse.AddField(textField);
-            
-            await _repository.AddAsync(formResponse);
+            IntFieldResponse intResponse = new IntFieldResponse(intField);
+            intResponse.SetValue(10);
+
+            formResponse.AddField(textResponse);
+            formResponse.AddField(intResponse);
 
             //act
             ValidationResult result = await _service.AddAsync(formResponse);
@@ -50,18 +57,21 @@ namespace FormBuilder.Core.Domain.Test.Models.Services
         public async Task FormResponseService_AddFormResponseInvalid_ResultInvalid()
         {
             //arrange
-            FormResponse formResponse = new FormResponse("Teste", DateTime.Now);
+            FormBuild formBuild = new FormBuild("Teste", DateTime.Now);
+            IntFieldBuilder intField = new IntFieldBuilder("value_test", 5, 10, true);
+            TextFieldBuilder textField = new TextFieldBuilder("text", isRequired: true);
+            formBuild.AddField(textField);
+            formBuild.AddField(intField);
 
-            IntField intField = new IntField("value_test", 5, 10, true);
-            intField.SetValue(11);
+            FormResponse formResponse = new FormResponse(formBuild);
 
-            TextField textField = new TextField("text", isRequired: true);
+            IntFieldResponse intResponse = new IntFieldResponse(intField);
+            intResponse.SetValue(11);
 
-            formResponse.AddField(intField);
-            formResponse.AddField(textField);
-
-            //add form invalid
-            await _repository.AddAsync(formResponse);
+            TextFieldResponse textResponse = new TextFieldResponse(textField);
+           
+            formResponse.AddField(intResponse);
+            formResponse.AddField(textResponse);
 
             //act
             ValidationResult result = await _service.AddAsync(formResponse);
@@ -74,16 +84,22 @@ namespace FormBuilder.Core.Domain.Test.Models.Services
         public async Task FormResponseService_UpdateFormResponseValid_ResultValid()
         {
             //arrange
-            FormResponse formResponse = new FormResponse("Teste", DateTime.Now);
+            FormBuild formBuild = new FormBuild("Teste", DateTime.Now);
+            IntFieldBuilder intField = new IntFieldBuilder("value_test", 5, 10, true);
+            TextFieldBuilder textField = new TextFieldBuilder("text");
+            formBuild.AddField(textField);
+            formBuild.AddField(intField);
 
-            IntField intField = new IntField("value_test", 5, 10, true);
-            intField.SetValue(10);
+            FormResponse formResponse = new FormResponse(formBuild);
 
-            TextField textField = new TextField("text");
-            textField.SetValue("valid");
+            IntFieldResponse intResponse = new IntFieldResponse(intField);
+            intResponse.SetValue(10);
 
-            formResponse.AddField(intField);
-            formResponse.AddField(textField);
+            TextFieldResponse textResponse = new TextFieldResponse(textField);
+            textResponse.SetValue("valid");
+
+            formResponse.AddField(intResponse);
+            formResponse.AddField(textResponse);
 
             await _repository.UpdateAsync(formResponse);
 
@@ -98,15 +114,20 @@ namespace FormBuilder.Core.Domain.Test.Models.Services
         public async Task FormResponseService_UpdateFormResponseInvalid_ResultInvalid()
         {
             //arrange
-            FormResponse formResponse = new FormResponse("Teste", DateTime.Now);
+            FormBuild formBuild = new FormBuild("Teste", DateTime.Now);
+            IntFieldBuilder intField = new IntFieldBuilder("value_test", 5, 10, true);
+            TextFieldBuilder textField = new TextFieldBuilder("text", isRequired: true);
+            formBuild.AddField(textField);
+            formBuild.AddField(intField);
 
-            IntField intField = new IntField("value_test", 5, 10, true);
-            intField.SetValue(11);
+            FormResponse formResponse = new FormResponse(formBuild);
 
-            TextField textField = new TextField("text", isRequired: true);
+            TextFieldResponse textResponse = new TextFieldResponse(textField);
+            IntFieldResponse intResponse = new IntFieldResponse(intField);
+            intResponse.SetValue(11);
 
-            formResponse.AddField(intField);
-            formResponse.AddField(textField);
+            formResponse.AddField(intResponse);
+            formResponse.AddField(textResponse);
 
             //add form invalid
             await _repository.UpdateAsync(formResponse);

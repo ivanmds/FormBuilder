@@ -1,21 +1,22 @@
 ﻿using Xunit;
 using FluentValidation.Results;
-using FormBuilder.Core.Domain.Models.Fields.Texts;
+using FormBuilder.Core.Domain.Models.Fields.Builder.Texts;
+using FormBuilder.Core.Domain.Models.Fields.Response.Texts;
 
 namespace FormBuilder.Core.Domain.Test.Models.Fields.Texts
 {
     public class TextFieldTest
     {
-
         [Fact]
         public void TextField_Success()
         {
             //arrange
-            TextField tField = new TextField("Name", 5, 20, false);
-            tField.SetValue("Testing field");
+            TextFieldBuilder tField = new TextFieldBuilder("Name", 5, 20, false);
+            TextFieldResponse fieldResponse = new TextFieldResponse(tField);
+            fieldResponse.SetValue("Testing field");
 
             //act
-            ValidationResult result = tField.Validate();
+            ValidationResult result = fieldResponse.Validate();
 
             //assert
             Assert.True(result.IsValid, "Regras não estão ok.");
@@ -28,11 +29,12 @@ namespace FormBuilder.Core.Domain.Test.Models.Fields.Texts
         public void TextField_IsRequired_ResultTrue(string value)
         {
             //arrange
-            TextField tField = new TextField("nome", isRequired: true);
-            tField.SetValue(value);
+            TextFieldBuilder tField = new TextFieldBuilder("nome", isRequired: true);
+            TextFieldResponse fieldResponse = new TextFieldResponse(tField);
+            fieldResponse.SetValue(value);
 
             //act
-            ValidationResult result = tField.Validate();
+            ValidationResult result = fieldResponse.Validate();
 
             //assert
             Assert.True(result.IsValid, "Regras não estão ok.");
@@ -45,11 +47,12 @@ namespace FormBuilder.Core.Domain.Test.Models.Fields.Texts
         public void TextField_IsRequired_ResultFalse(string value)
         {
             //arrange
-            TextField tField = new TextField("nome", isRequired: true);
-            tField.SetValue(value);
+            TextFieldBuilder tField = new TextFieldBuilder("nome", isRequired: true);
+            TextFieldResponse fieldResponse = new TextFieldResponse(tField);
+            fieldResponse.SetValue(value);
 
             //act
-            ValidationResult result = tField.Validate();
+            ValidationResult result = fieldResponse.Validate();
 
             //assert
             Assert.False(result.IsValid, "Regras não estão ok.");
@@ -62,11 +65,12 @@ namespace FormBuilder.Core.Domain.Test.Models.Fields.Texts
         public void TextField_MinLenght_ResultTrue(string value)
         {
             //arrange
-            TextField tField = new TextField("nome", minLength: 3);
-            tField.SetValue(value);
+            TextFieldBuilder tField = new TextFieldBuilder("nome", minLength: 3);
+            TextFieldResponse fieldResponse = new TextFieldResponse(tField);
+            fieldResponse.SetValue(value);
 
             //act
-            ValidationResult result = tField.Validate();
+            ValidationResult result = fieldResponse.Validate();
 
             //assert
             Assert.True(result.IsValid, "Regras não estão ok.");
@@ -79,11 +83,12 @@ namespace FormBuilder.Core.Domain.Test.Models.Fields.Texts
         public void TextField_MinLenght_ResultFalse(string value)
         {
             //arrange
-            TextField tField = new TextField("nome", minLength: 3);
-            tField.SetValue(value);
+            TextFieldBuilder tField = new TextFieldBuilder("nome", minLength: 3);
+            TextFieldResponse fieldResponse = new TextFieldResponse(tField);
+            fieldResponse.SetValue(value);
 
             //act
-            ValidationResult result = tField.Validate();
+            ValidationResult result = fieldResponse.Validate();
 
             //assert
             Assert.False(result.IsValid, "Regras não estão ok.");
@@ -96,11 +101,12 @@ namespace FormBuilder.Core.Domain.Test.Models.Fields.Texts
         public void TextField_MaxLenght_ResultTrue(string value)
         {
             //arrange
-            TextField tField = new TextField("nome", maxLength: 10);
-            tField.SetValue(value);
+            TextFieldBuilder tField = new TextFieldBuilder("nome", maxLength: 10);
+            TextFieldResponse fieldResponse = new TextFieldResponse(tField);
+            fieldResponse.SetValue(value);
 
             //act
-            ValidationResult result = tField.Validate();
+            ValidationResult result = fieldResponse.Validate();
 
             //assert
             Assert.True(result.IsValid, "Regras não estão ok.");
@@ -113,11 +119,12 @@ namespace FormBuilder.Core.Domain.Test.Models.Fields.Texts
         public void TextField_MaxLenght_ResultFalse(string value)
         {
             //arrange
-            TextField tField = new TextField("nome", maxLength: 10);
-            tField.SetValue(value);
+            TextFieldBuilder tField = new TextFieldBuilder("nome", maxLength: 10);
+            TextFieldResponse fieldResponse = new TextFieldResponse(tField);
+            fieldResponse.SetValue(value);
 
             //act
-            ValidationResult result = tField.Validate();
+            ValidationResult result = fieldResponse.Validate();
 
             //assert
             Assert.False(result.IsValid, "Regras não estão ok.");
@@ -127,11 +134,12 @@ namespace FormBuilder.Core.Domain.Test.Models.Fields.Texts
         public void TextField_CreateNewField_ResultTrue()
         {
             //arrange
-            TextField tField = new TextField("nome", 5, 10, true);
-            tField.SetValue("teste");
+            TextFieldBuilder tField = new TextFieldBuilder("nome", 5, 10, true);
+            TextFieldResponse fieldResponse = new TextFieldResponse(tField);
+            fieldResponse.SetValue("teste");
 
             //act
-            ValidationResult result = tField.Validate();
+            ValidationResult result = fieldResponse.Validate();
 
             //assert
             Assert.True(result.IsValid, "Regras não estão ok.");

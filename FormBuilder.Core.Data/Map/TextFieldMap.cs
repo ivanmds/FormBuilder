@@ -1,12 +1,12 @@
-﻿using FormBuilder.Core.Domain.Models.Fields.Texts;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using FormBuilder.Core.Domain.Models.Fields.Builder.Texts;
 
 namespace FormBuilder.Core.Data.Map
 {
-    public class TextFieldMap : IEntityTypeConfiguration<TextField>
+    public class TextFieldMap : IEntityTypeConfiguration<TextFieldBuilder>
     {
-        public void Configure(EntityTypeBuilder<TextField> builder)
+        public void Configure(EntityTypeBuilder<TextFieldBuilder> builder)
         {
             builder.ToTable("TextField");
         }

@@ -6,8 +6,8 @@ using FormBuilder.Core.Domain.Interfaces.Repositories.Forms;
 using System.Threading.Tasks;
 using FormBuilder.Core.Data.UnitOfWorks;
 using FormBuilder.Core.Data.DbContexts;
-using FormBuilder.Core.Domain.Models.Fields.Numbers;
-using FormBuilder.Core.Domain.Models.Fields.Texts;
+using FormBuilder.Core.Domain.Models.Fields.Builder.Numbers;
+using FormBuilder.Core.Domain.Models.Fields.Builder.Texts;
 
 namespace FormBuilder.Core.Data.Test.Repositories.Form
 {
@@ -94,7 +94,7 @@ namespace FormBuilder.Core.Data.Test.Repositories.Form
         {
             //arrange
             FormBuild formBuild = new FormBuild("Test", DateTime.Now.AddDays(10));
-            IntField intField = new IntField("value_test", 5, 10, true);
+            IntFieldBuilder intField = new IntFieldBuilder("value_test", 5, 10, true);
             formBuild.AddField(intField);
             await _repository.AddAsync(formBuild);
 
@@ -112,8 +112,8 @@ namespace FormBuilder.Core.Data.Test.Repositories.Form
         {
             //arrange
             FormBuild formBuild = new FormBuild("Test", DateTime.Now.AddDays(10));
-            IntField intField = new IntField("value_test", 5, 10, true);
-            TextField textField = new TextField("name", 10, 20, true, "Your name");
+            IntFieldBuilder intField = new IntFieldBuilder("value_test", 5, 10, true);
+            TextFieldBuilder textField = new TextFieldBuilder("name", 10, 20, true, "Your name");
             formBuild.AddField(intField);
             formBuild.AddField(textField);
             await _repository.AddAsync(formBuild);

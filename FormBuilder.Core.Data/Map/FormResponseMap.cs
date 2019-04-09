@@ -8,7 +8,7 @@ namespace FormBuilder.Core.Data.Map
     {
         public void Configure(EntityTypeBuilder<FormResponse> builder)
         {
-            throw new System.NotImplementedException();
+            builder.ToTable("FormResponse");
         }
     }
 }

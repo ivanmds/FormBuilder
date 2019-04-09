@@ -2,8 +2,11 @@
 using System;
 using FluentValidation.Results;
 using FormBuilder.Core.Domain.Models.Forms.Response;
-using FormBuilder.Core.Domain.Models.Fields.Numbers;
-using FormBuilder.Core.Domain.Models.Fields.Texts;
+using FormBuilder.Core.Domain.Models.Fields.Builder.Numbers;
+using FormBuilder.Core.Domain.Models.Fields.Response.Numbers;
+using FormBuilder.Core.Domain.Models.Fields.Response.Texts;
+using FormBuilder.Core.Domain.Models.Fields.Builder.Texts;
+using FormBuilder.Core.Domain.Models.Forms;
 
 namespace Form.Core.Domain.Test.Models.Forms
 {
@@ -13,10 +16,11 @@ namespace Form.Core.Domain.Test.Models.Forms
         public void FormResponse_Success()
         {
             //arrange
-            FormResponse FormResponse = new FormResponse("Teste", DateTime.Now);
+            FormBuild formBuild = new FormBuild("Teste", DateTime.Now);
+            FormResponse formResponse = new FormResponse(formBuild);
 
             //act
-            ValidationResult result = FormResponse.Validate();
+            ValidationResult result = formResponse.Validate();
 
             //assert
             Assert.True(result.IsValid, "Formulário não está válido");
@@ -26,16 +30,19 @@ namespace Form.Core.Domain.Test.Models.Forms
         public void FormResponse_AddFiledInvalid_ResultFalse()
         {
             //arrange
-            FormResponse FormResponse = new FormResponse("Teste", DateTime.Now);
-            
-            IntField intField = new IntField("value_test", 5, 10, true);
-            //set value invalid
-            intField.SetValue(11);
+            FormBuild formBuild = new FormBuild("Teste", DateTime.Now);
+            IntFieldBuilder intField = new IntFieldBuilder("value_test", 5, 10, true);
+            formBuild.AddField(intField);
 
-            FormResponse.AddField(intField);
+            FormResponse formResponse = new FormResponse(formBuild);
+            IntFieldResponse intFieldResponse = new IntFieldResponse(intField);
+            //set value invalid
+            intFieldResponse.SetValue(11);
+
+            formResponse.AddField(intFieldResponse);
 
             //act
-            ValidationResult result = FormResponse.Validate();
+            ValidationResult result = formResponse.Validate();
 
             //assert
             Assert.False(result.IsValid, "Formulário não está válido");
@@ -46,12 +53,16 @@ namespace Form.Core.Domain.Test.Models.Forms
         public void FormResponse_AddNewIndex_ResultTrue()
         {
             //arrange
-            FormResponse FormResponse = new FormResponse("Teste", DateTime.Now);
-            TextField textField = new TextField("text");
-            textField.SetValue("valid");
+            FormBuild formBuild = new FormBuild("Teste", DateTime.Now);
+            TextFieldBuilder textField = new TextFieldBuilder("text");
+            formBuild.AddField(textField);
+
+            FormResponse formResponse = new FormResponse(formBuild);
+            TextFieldResponse textFieldResponse = new TextFieldResponse(textField);
+            textFieldResponse.SetValue("valid");
 
             //act
-            bool indexAdd = FormResponse.AddField(textField);
+            bool indexAdd = formResponse.AddField(textFieldResponse);
 
             //assert
             Assert.True(indexAdd);

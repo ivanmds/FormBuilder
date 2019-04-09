@@ -8,7 +8,7 @@ namespace FormBuilder.Core.Data.Map
     {
         public void Configure(EntityTypeBuilder<FormBuild> builder)
         {
-            builder.ToTable("FormBuild");
+            builder.ToTable("FormBuilder");
             builder.HasKey(p => p.Id);
         }
     }

@@ -1,12 +1,23 @@
 ﻿using FluentValidation.Results;
-using FormBuilder.Core.Domain.Interfaces.Validation;
-using FormBuilder.Core.Domain.Models.Forms.Builder;
 using System.Collections.Generic;
+using FormBuilder.Core.Domain.Interfaces.Validation;
+using FormBuilder.Core.Domain.Models.Fields.Response;
 
 namespace FormBuilder.Core.Domain.Models.Forms.Response
 {
-    public abstract class FormResponseBase : FormBase, IValidable
+    public abstract class FormResponseBase :  IValidable
     {
+        public int Id { get; protected set; }
+
+        private List<BaseFieldResponse> _fields = new List<BaseFieldResponse>();
+        public IReadOnlyCollection<BaseFieldResponse> Fields => _fields;
+
+        public bool AddField(BaseFieldResponse field)
+        {
+            _fields.Add(field);
+            return true;
+        }
+
         public abstract ValidationResult Validate();
 
         protected List<ValidationFailure> GetFieldsValidate()

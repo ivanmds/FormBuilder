@@ -1,24 +1,22 @@
 ﻿using FluentValidation;
-using FormBuilder.Core.Domain.Models.Fields.Numbers;
+using FormBuilder.Core.Domain.Models.Fields.Response.Numbers;
 
 namespace FormBuilder.Core.Domain.Validations.Fields.Numbers
 {
-    public class IntFieldValidation : AbstractValidator<IntField>
+    public class IntFieldValidation : AbstractValidator<IntFieldResponse>
     {
         public IntFieldValidation()
         {
-            ValidateName();
+            ValidateField();
             ValidateIsRequired();
             ValidateMinValue();
             ValidateMaxValue();
         }
 
-        private void ValidateName()
+        private void ValidateField()
         {
-            RuleFor(p => p.Name)
-                .NotNull()
-                .NotEmpty()
-                .WithMessage("Name is required.");
+            RuleFor(p => p.Field)
+                .NotNull();
         }
 
         private void ValidateIsRequired()
@@ -28,29 +26,29 @@ namespace FormBuilder.Core.Domain.Validations.Fields.Numbers
                 {
                     return value.HasValue;
                 })
-                .When(p => p.IsRequired == true)
+                .When(p => p.Field != null && p.Field.IsRequired == true)
                 .WithMessage("Value is required.");
         }
 
         private void ValidateMinValue()
         {
             RuleFor(p => p.Value)
-                .Must((field, value) =>
+                .Must((response, value) =>
                 {
-                    return value >= field.MinValue.Value;
+                    return value >= response.Field.MinValue.Value;
                 })
-                .When(p => p.MinValue != null)
+                .When(p => p.Field != null && p.Field.MinValue != null)
                 .WithMessage("Min value is required.");
         }
 
         private void ValidateMaxValue()
         {
             RuleFor(p => p.Value)
-                .Must((field, value) =>
+                .Must((response, value) =>
                 {
-                    return value <= field.MaxValue.Value;
+                    return value <= response.Field.MaxValue.Value;
                 })
-                .When(p => p.MaxValue != null)
+                .When(p => p.Field != null && p.Field.MaxValue != null)
                 .WithMessage("Max value is required.");
         }
     }

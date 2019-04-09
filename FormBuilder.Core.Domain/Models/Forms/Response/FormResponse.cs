@@ -1,26 +1,23 @@
-﻿using System;
-using FluentValidation.Results;
+﻿using FluentValidation.Results;
 using System.Collections.Generic;
-using FormBuilder.Core.Domain.Validations.Forms;
 
 namespace FormBuilder.Core.Domain.Models.Forms.Response
 {
     public class FormResponse : FormResponseBase
     {
-        public FormResponse(string name, DateTime expiredIn)
+        //ef
+        protected FormResponse() { }
+
+        public FormResponse(FormBuild formBuild)
         {
-            Name = name;
-            ExpiredIn = expiredIn;
+            FormBuild = formBuild;
         }
+
+        public FormBuild FormBuild { get; protected set; }
 
         public override ValidationResult Validate()
         {
-            ValidationResult fBuilderValidation = new FormBaseValidation().Validate(this);
             List<ValidationFailure> fieldValidations = GetFieldsValidate();
-
-            if (!fBuilderValidation.IsValid)
-                fieldValidations.AddRange(fBuilderValidation.Errors);
-
             return new ValidationResult(fieldValidations);
         }
     }

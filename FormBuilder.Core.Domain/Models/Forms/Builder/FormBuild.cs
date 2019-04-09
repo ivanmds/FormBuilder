@@ -1,9 +1,9 @@
-﻿using FormBuilder.Core.Domain.Models.Forms.Builder;
-using System;
+﻿using System;
+using FormBuilder.Core.Domain.Models.Forms.Builder;
 
 namespace FormBuilder.Core.Domain.Models.Forms
 {
-    public class FormBuild : FormBase
+    public class FormBuild : FormBuildBase
     {
         public FormBuild(string name, DateTime expiredIn)
         {
