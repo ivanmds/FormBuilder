@@ -14,9 +14,9 @@ namespace FormBuilder.Core.Domain.Models.Forms.Response
             List<ValidationFailure> failures = new List<ValidationFailure>();
             if (Fields.Count > 0)
             {
-                foreach (var keyValue in Fields)
+                foreach (var field in Fields)
                 {
-                    ValidationResult result = keyValue.Value.Validate();
+                    ValidationResult result = field.Validate();
                     if (!result.IsValid)
                         failures.AddRange(result.Errors);
                 }

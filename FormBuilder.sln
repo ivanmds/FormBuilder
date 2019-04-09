@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
-VisualStudioVersion = 16.0.28531.58
+VisualStudioVersion = 16.0.28729.10
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{ECA5FAEC-2CED-4685-A03F-E5C7F0B2B51F}"
 EndProject
@@ -13,7 +13,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FormBuilder.Core.Domain.Tes
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{55EFB61E-3005-47E8-88E0-9AA80523CCE0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormBuilder.Core.Data", "FormBuilder.Core.Data\FormBuilder.Core.Data.csproj", "{E053A8D3-44C4-4B7B-A788-CAE982EEDE2C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FormBuilder.Core.Data", "FormBuilder.Core.Data\FormBuilder.Core.Data.csproj", "{E053A8D3-44C4-4B7B-A788-CAE982EEDE2C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{12816AED-928D-4E7F-A8FB-0A1297E9EBE6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FormBuilder.Angular", "FormBuilder.Angular\FormBuilder.Angular.csproj", "{22872F4B-CD10-46D7-9106-09C2BAD2C446}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormBuilder.Core.Data.Test", "FormBuilder.Core.Data.Test\FormBuilder.Core.Data.Test.csproj", "{83D6F6B2-BC93-40A8-B9C4-50A0C6CAC960}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +39,14 @@ Global
 		{E053A8D3-44C4-4B7B-A788-CAE982EEDE2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E053A8D3-44C4-4B7B-A788-CAE982EEDE2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E053A8D3-44C4-4B7B-A788-CAE982EEDE2C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{22872F4B-CD10-46D7-9106-09C2BAD2C446}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22872F4B-CD10-46D7-9106-09C2BAD2C446}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22872F4B-CD10-46D7-9106-09C2BAD2C446}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22872F4B-CD10-46D7-9106-09C2BAD2C446}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83D6F6B2-BC93-40A8-B9C4-50A0C6CAC960}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83D6F6B2-BC93-40A8-B9C4-50A0C6CAC960}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83D6F6B2-BC93-40A8-B9C4-50A0C6CAC960}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83D6F6B2-BC93-40A8-B9C4-50A0C6CAC960}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -43,6 +57,8 @@ Global
 		{50989843-9F44-4714-80DE-552A20793EE6} = {ECA5FAEC-2CED-4685-A03F-E5C7F0B2B51F}
 		{55EFB61E-3005-47E8-88E0-9AA80523CCE0} = {F7DD4955-4C72-49B8-A2B5-F180BF47CD06}
 		{E053A8D3-44C4-4B7B-A788-CAE982EEDE2C} = {55EFB61E-3005-47E8-88E0-9AA80523CCE0}
+		{22872F4B-CD10-46D7-9106-09C2BAD2C446} = {12816AED-928D-4E7F-A8FB-0A1297E9EBE6}
+		{83D6F6B2-BC93-40A8-B9C4-50A0C6CAC960} = {55EFB61E-3005-47E8-88E0-9AA80523CCE0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C605085B-E87D-4971-AF76-DEBFF4CAE440}

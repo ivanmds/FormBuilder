@@ -34,8 +34,8 @@ namespace FormBuilder.Core.Domain.Test.Models.Services
             TextField textField = new TextField("text");
             textField.SetValue("valid");
 
-            formResponse.AddField(1, intField);
-            formResponse.AddField(2, textField);
+            formResponse.AddField(intField);
+            formResponse.AddField(textField);
             
             await _repository.AddAsync(formResponse);
 
@@ -57,8 +57,8 @@ namespace FormBuilder.Core.Domain.Test.Models.Services
 
             TextField textField = new TextField("text", isRequired: true);
 
-            formResponse.AddField(1, intField);
-            formResponse.AddField(2, textField);
+            formResponse.AddField(intField);
+            formResponse.AddField(textField);
 
             //add form invalid
             await _repository.AddAsync(formResponse);
@@ -82,8 +82,8 @@ namespace FormBuilder.Core.Domain.Test.Models.Services
             TextField textField = new TextField("text");
             textField.SetValue("valid");
 
-            formResponse.AddField(1, intField);
-            formResponse.AddField(2, textField);
+            formResponse.AddField(intField);
+            formResponse.AddField(textField);
 
             await _repository.UpdateAsync(formResponse);
 
@@ -105,8 +105,8 @@ namespace FormBuilder.Core.Domain.Test.Models.Services
 
             TextField textField = new TextField("text", isRequired: true);
 
-            formResponse.AddField(1, intField);
-            formResponse.AddField(2, textField);
+            formResponse.AddField(intField);
+            formResponse.AddField(textField);
 
             //add form invalid
             await _repository.UpdateAsync(formResponse);

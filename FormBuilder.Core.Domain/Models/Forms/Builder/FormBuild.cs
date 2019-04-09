@@ -10,5 +10,10 @@ namespace FormBuilder.Core.Domain.Models.Forms
             Name = name;
             ExpiredIn = expiredIn;
         }
+       
+        public void SetName(string name)
+        {
+            Name = name;
+        }
     }
 }

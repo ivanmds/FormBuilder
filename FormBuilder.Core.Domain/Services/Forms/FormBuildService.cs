@@ -13,21 +13,21 @@ namespace FormBuilder.Core.Domain.Services.Forms
             _repository = repository;
         }
 
-        public async Task<FormBuild> GetAsync(int id)
+        public async Task<FormBuild> FindAsync(int id)
         {
-            return await _repository.GetAsync(id);
+            return await _repository.FindAsync(id);
         }
         public async Task AddAsync(FormBuild formBuild)
         {
             await _repository.AddAsync(formBuild);
         }
-        public async Task UpdateAsync(FormBuild formBuild)
+        public void Update(FormBuild formBuild)
         {
-            await _repository.UpdateAsync(formBuild);
+            _repository.Update(formBuild);
         }
-        public async Task DeleteAsync(int id)
+        public async Task RemoveAsync(int id)
         {
-            await _repository.DeleteAsync(id);
+            await _repository.RemoveAsync(id);
         }
     }
 }

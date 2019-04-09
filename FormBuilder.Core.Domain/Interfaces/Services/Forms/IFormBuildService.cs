@@ -5,9 +5,9 @@ namespace FormBuilder.Core.Domain.Interfaces.Services.Forms
 {
     public interface IFormBuildService
     {
-        Task<FormBuild> GetAsync(int id);
+        Task<FormBuild> FindAsync(int id);
         Task AddAsync(FormBuild fBuilder);
-        Task UpdateAsync(FormBuild fBuilder);
-        Task DeleteAsync(int id);
+        void Update(FormBuild fBuilder);
+        Task RemoveAsync(int id);
     }
 }
