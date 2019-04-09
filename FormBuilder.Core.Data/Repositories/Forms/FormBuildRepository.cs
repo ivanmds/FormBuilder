@@ -1,29 +1,38 @@
 ﻿using System.Threading.Tasks;
-using FormBuilder.Core.Domain.Interfaces.Repositories.Forms;
+using FormBuilder.Core.Data.DbContexts;
 using FormBuilder.Core.Domain.Models.Forms;
+using FormBuilder.Core.Domain.Interfaces.Repositories.Forms;
 
 namespace FormBuilder.Core.Data.Repositories.Forms
 {
     public class FormBuildRepository : IFormBuildRepository
     {
-        public Task AddAsync(FormBuild fBuilder)
+        protected readonly DbContextCore _dbContext;
+
+        public FormBuildRepository(DbContextCore dbContext)
         {
-            throw new System.NotImplementedException();
+            _dbContext = dbContext;
         }
 
-        public Task DeleteAsync(int id)
+        public async Task<FormBuild> FindAsync(int id)
         {
-            throw new System.NotImplementedException();
+            return await _dbContext.FormBuilds.FindAsync(id);
         }
 
-        public Task<FormBuild> GetAsync(int id)
+        public async Task AddAsync(FormBuild fBuilder)
         {
-            throw new System.NotImplementedException();
+            await _dbContext.FormBuilds.AddAsync(fBuilder);
         }
 
-        public Task UpdateAsync(FormBuild fBuilder)
+        public void Update(FormBuild fBuilder)
         {
-            throw new System.NotImplementedException();
+            _dbContext.FormBuilds.Update(fBuilder);
+        }
+
+        public async Task RemoveAsync(int id)
+        {
+            FormBuild formBuild = await FindAsync(id);
+            _dbContext.FormBuilds.Remove(formBuild);
         }
     }
 }

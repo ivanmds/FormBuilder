@@ -6,22 +6,22 @@ namespace FormBuilder.Core.Data.Repositories.Forms
 {
     public class FormResponseRepository : IFormResponseRepository
     {
-        public Task AddAsync(FormResponse formResponse)
+        public async Task<FormResponse> GetAsync(int id)
         {
             throw new System.NotImplementedException();
         }
 
-        public Task DeleteAsync(int id)
+        public async Task AddAsync(FormResponse formResponse)
         {
             throw new System.NotImplementedException();
         }
 
-        public Task<FormResponse> GetAsync(int id)
+        public async Task UpdateAsync(FormResponse formResponse)
         {
             throw new System.NotImplementedException();
         }
 
-        public Task UpdateAsync(FormResponse formResponse)
+        public async Task DeleteAsync(int id)
         {
             throw new System.NotImplementedException();
         }
