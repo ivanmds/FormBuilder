@@ -4,14 +4,16 @@ using FormBuilder.Core.Data.DbContexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace FormBuilder.Core.Data.Migrations
 {
     [DbContext(typeof(DbContextCore))]
-    partial class DbContextCoreModelSnapshot : ModelSnapshot
+    [Migration("20190409034817_Removendo_Propriedades_De_Valor_Da_Contrucao_Do_Form")]
+    partial class Removendo_Propriedades_De_Valor_Da_Contrucao_Do_Form
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
