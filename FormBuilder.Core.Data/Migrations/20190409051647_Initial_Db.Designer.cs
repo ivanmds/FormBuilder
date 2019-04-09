@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FormBuilder.Core.Data.Migrations
 {
     [DbContext(typeof(DbContextCore))]
-    [Migration("20190409020120_Initial_Db")]
+    [Migration("20190409051647_Initial_Db")]
     partial class Initial_Db
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -21,7 +21,7 @@ namespace FormBuilder.Core.Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("FormBuilder.Core.Domain.Models.Fields.BaseField", b =>
+            modelBuilder.Entity("FormBuilder.Core.Domain.Models.Fields.Builder.BaseFieldBuilder", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -42,9 +42,9 @@ namespace FormBuilder.Core.Data.Migrations
 
                     b.HasIndex("FormBuildId");
 
-                    b.ToTable("BaseField");
+                    b.ToTable("BaseFieldBuilder");
 
-                    b.HasDiscriminator<string>("Discriminator").HasValue("BaseField");
+                    b.HasDiscriminator<string>("Discriminator").HasValue("BaseFieldBuilder");
                 });
 
             modelBuilder.Entity("FormBuilder.Core.Domain.Models.Forms.FormBuild", b =>
@@ -59,27 +59,25 @@ namespace FormBuilder.Core.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("FormBuild");
+                    b.ToTable("FormBuilder");
                 });
 
-            modelBuilder.Entity("FormBuilder.Core.Domain.Models.Fields.Numbers.IntField", b =>
+            modelBuilder.Entity("FormBuilder.Core.Domain.Models.Fields.Builder.Numbers.IntFieldBuilder", b =>
                 {
-                    b.HasBaseType("FormBuilder.Core.Domain.Models.Fields.BaseField");
+                    b.HasBaseType("FormBuilder.Core.Domain.Models.Fields.Builder.BaseFieldBuilder");
 
                     b.Property<int?>("MaxValue");
 
                     b.Property<int?>("MinValue");
 
-                    b.Property<int?>("Value");
-
                     b.ToTable("IntField");
 
-                    b.HasDiscriminator().HasValue("IntField");
+                    b.HasDiscriminator().HasValue("IntFieldBuilder");
                 });
 
-            modelBuilder.Entity("FormBuilder.Core.Domain.Models.Fields.Texts.TextField", b =>
+            modelBuilder.Entity("FormBuilder.Core.Domain.Models.Fields.Builder.Texts.TextFieldBuilder", b =>
                 {
-                    b.HasBaseType("FormBuilder.Core.Domain.Models.Fields.BaseField");
+                    b.HasBaseType("FormBuilder.Core.Domain.Models.Fields.Builder.BaseFieldBuilder");
 
                     b.Property<int?>("MaxLength");
 
@@ -87,15 +85,12 @@ namespace FormBuilder.Core.Data.Migrations
 
                     b.Property<string>("Placeholder");
 
-                    b.Property<string>("Value")
-                        .HasColumnName("TextField_Value");
-
                     b.ToTable("TextField");
 
-                    b.HasDiscriminator().HasValue("TextField");
+                    b.HasDiscriminator().HasValue("TextFieldBuilder");
                 });
 
-            modelBuilder.Entity("FormBuilder.Core.Domain.Models.Fields.BaseField", b =>
+            modelBuilder.Entity("FormBuilder.Core.Domain.Models.Fields.Builder.BaseFieldBuilder", b =>
                 {
                     b.HasOne("FormBuilder.Core.Domain.Models.Forms.FormBuild")
                         .WithMany("Fields")
