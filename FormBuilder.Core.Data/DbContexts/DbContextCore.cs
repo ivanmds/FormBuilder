@@ -1,23 +1,41 @@
-﻿using FormBuilder.Core.Data.Map;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using FormBuilder.Core.Data.Map.Builder;
+using FormBuilder.Core.Data.Map.Response;
 using FormBuilder.Core.Domain.Models.Forms;
 using FormBuilder.Core.Domain.Models.Fields.Builder.Texts;
 using FormBuilder.Core.Domain.Models.Fields.Builder.Numbers;
+using FormBuilder.Core.Domain.Models.Forms.Response;
+using FormBuilder.Core.Domain.Models.Fields.Response.Numbers;
+using FormBuilder.Core.Domain.Models.Fields.Response.Texts;
 
 namespace FormBuilder.Core.Data.DbContexts
 {
     public class DbContextCore : DbContext
     {
         public DbSet<FormBuild> FormBuilds { get; set; }
-        //public DbSet<FormResponse> FormResponses { get; set; }
-        public DbSet<TextFieldBuilder> TextFields { get; set; }
-        public DbSet<IntFieldBuilder> IntFields { get; set; }
+        public DbSet<TextFieldBuilder> TextFieldBuilders { get; set; }
+        public DbSet<IntFieldBuilder> IntFieldBuilders { get; set; }
+
+        public DbSet<FormResponse> FormResponses { get; set; }
+        public DbSet<IntFieldResponse> IntFieldResponses { get; set; }
+        public DbSet<TextFieldResponse> TextFieldResponses { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            #region Builders
             modelBuilder.ApplyConfiguration(new FormBuildMap());
-            modelBuilder.ApplyConfiguration(new TextFieldMap());
-            modelBuilder.ApplyConfiguration(new IntFieldMap());
+            modelBuilder.ApplyConfiguration(new BaseFieldBuilderMap());
+            modelBuilder.ApplyConfiguration(new TextFieldBuilderMap());
+            modelBuilder.ApplyConfiguration(new IntFieldBuilderMap());
+            #endregion
+
+            #region Responses
+            modelBuilder.ApplyConfiguration(new FormResponseMap());
+            modelBuilder.ApplyConfiguration(new BaseFieldResponseMap());
+            modelBuilder.ApplyConfiguration(new IntFieldBuilderMap());
+            modelBuilder.ApplyConfiguration(new TextFieldBuilderMap());
+            #endregion
 
             base.OnModelCreating(modelBuilder);
         }
