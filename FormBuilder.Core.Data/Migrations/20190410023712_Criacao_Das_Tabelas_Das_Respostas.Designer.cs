@@ -4,14 +4,16 @@ using FormBuilder.Core.Data.DbContexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace FormBuilder.Core.Data.Migrations
 {
     [DbContext(typeof(DbContextCore))]
-    partial class DbContextCoreModelSnapshot : ModelSnapshot
+    [Migration("20190410023712_Criacao_Das_Tabelas_Das_Respostas")]
+    partial class Criacao_Das_Tabelas_Das_Respostas
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
