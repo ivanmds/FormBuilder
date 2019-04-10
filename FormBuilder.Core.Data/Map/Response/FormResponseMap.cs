@@ -14,7 +14,7 @@ namespace FormBuilder.Core.Data.Map.Response
 
             builder.HasMany(p => p.Fields)
                 .WithOne()
-                .HasForeignKey("FieldBuilderId");
+                .HasForeignKey(p => p.Id);
         }
     }
 }

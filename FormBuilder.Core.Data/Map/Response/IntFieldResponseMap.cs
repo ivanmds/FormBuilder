@@ -10,7 +10,7 @@ namespace FormBuilder.Core.Data.Map.Response
         {
             builder.ToTable("IntFieldResponse");
 
-            builder.HasOne(p => p.Field)
+            builder.HasOne(p => p.FieldBuilder)
                 .WithMany()
                 .HasForeignKey("FieldBuilderId");
 

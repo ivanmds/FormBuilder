@@ -15,7 +15,7 @@ namespace FormBuilder.Core.Domain.Validations.Fields.Numbers
 
         private void ValidateField()
         {
-            RuleFor(p => p.Field)
+            RuleFor(p => p.FieldBuilder)
                 .NotNull();
         }
 
@@ -26,7 +26,7 @@ namespace FormBuilder.Core.Domain.Validations.Fields.Numbers
                 {
                     return value.HasValue;
                 })
-                .When(p => p.Field != null && p.Field.IsRequired == true)
+                .When(p => p.FieldBuilder != null && p.FieldBuilder.IsRequired == true)
                 .WithMessage("Value is required.");
         }
 
@@ -35,9 +35,9 @@ namespace FormBuilder.Core.Domain.Validations.Fields.Numbers
             RuleFor(p => p.Value)
                 .Must((response, value) =>
                 {
-                    return value >= response.Field.MinValue.Value;
+                    return value >= response.FieldBuilder.MinValue.Value;
                 })
-                .When(p => p.Field != null && p.Field.MinValue != null)
+                .When(p => p.FieldBuilder != null && p.FieldBuilder.MinValue != null)
                 .WithMessage("Min value is required.");
         }
 
@@ -46,9 +46,9 @@ namespace FormBuilder.Core.Domain.Validations.Fields.Numbers
             RuleFor(p => p.Value)
                 .Must((response, value) =>
                 {
-                    return value <= response.Field.MaxValue.Value;
+                    return value <= response.FieldBuilder.MaxValue.Value;
                 })
-                .When(p => p.Field != null && p.Field.MaxValue != null)
+                .When(p => p.FieldBuilder != null && p.FieldBuilder.MaxValue != null)
                 .WithMessage("Max value is required.");
         }
     }

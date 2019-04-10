@@ -30,19 +30,19 @@ namespace FormBuilder.Core.Domain.Services.Forms
             return result;
         }
 
-        public async Task<ValidationResult> UpdateAsync(FormResponse formResponse)
+        public ValidationResult Update(FormResponse formResponse)
         {
             ValidationResult result = formResponse.Validate();
 
             if (result.IsValid)
-                await _repository.UpdateAsync(formResponse);
+                _repository.Update(formResponse);
 
             return result;
         }
 
-        public async Task DeleteAsync(int id)
+        public async Task RemoveAsync(int id)
         {
-            await _repository.DeleteAsync(id);
+            await _repository.RemoveAsync(id);
         }
     }
 }

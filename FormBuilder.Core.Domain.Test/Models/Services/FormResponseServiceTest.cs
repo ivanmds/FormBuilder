@@ -81,7 +81,7 @@ namespace FormBuilder.Core.Domain.Test.Models.Services
         }
 
         [Fact]
-        public async Task FormResponseService_UpdateFormResponseValid_ResultValid()
+        public void FormResponseService_UpdateFormResponseValid_ResultValid()
         {
             //arrange
             FormBuild formBuild = new FormBuild("Teste", DateTime.Now);
@@ -101,17 +101,17 @@ namespace FormBuilder.Core.Domain.Test.Models.Services
             formResponse.AddField(intResponse);
             formResponse.AddField(textResponse);
 
-            await _repository.UpdateAsync(formResponse);
+            _repository.Update(formResponse);
 
             //act
-            ValidationResult result = await _service.UpdateAsync(formResponse);
+            ValidationResult result = _service.Update(formResponse);
 
             //assert
             Assert.True(result.IsValid, "Formulário não está válido");
         }
 
         [Fact]
-        public async Task FormResponseService_UpdateFormResponseInvalid_ResultInvalid()
+        public void FormResponseService_UpdateFormResponseInvalid_ResultInvalid()
         {
             //arrange
             FormBuild formBuild = new FormBuild("Teste", DateTime.Now);
@@ -130,10 +130,10 @@ namespace FormBuilder.Core.Domain.Test.Models.Services
             formResponse.AddField(textResponse);
 
             //add form invalid
-            await _repository.UpdateAsync(formResponse);
+            _repository.Update(formResponse);
 
             //act
-            ValidationResult result = await _service.UpdateAsync(formResponse);
+            ValidationResult result = _service.Update(formResponse);
 
             //assert
             Assert.False(result.IsValid, "Formulário não está válido");

@@ -15,7 +15,7 @@ namespace FormBuilder.Core.Domain.Validations.Fields.Texts
 
         private void ValidateField()
         {
-            RuleFor(p => p.Field)
+            RuleFor(p => p.FieldBuilder)
                 .NotNull();
         }
         private void ValidateIsRequired()
@@ -24,7 +24,7 @@ namespace FormBuilder.Core.Domain.Validations.Fields.Texts
                .Must((response, value) => {
                    return !string.IsNullOrEmpty(value);
                })
-               .When(p => p.Field != null && p.Field.IsRequired == true)
+               .When(p => p.FieldBuilder != null && p.FieldBuilder.IsRequired == true)
                .WithMessage("Field is required");
         }
 
@@ -33,9 +33,9 @@ namespace FormBuilder.Core.Domain.Validations.Fields.Texts
             RuleFor(p => p.Value)
                 .Must((response, value) =>
                 {
-                    return response.Field?.MinLength > 0 && value.Length >= response.Field.MinLength.Value;
+                    return response.FieldBuilder?.MinLength > 0 && value.Length >= response.FieldBuilder.MinLength.Value;
                 })
-                .When(p => p.Field != null && p.Field.MinLength != null)
+                .When(p => p.FieldBuilder != null && p.FieldBuilder.MinLength != null)
                 .WithMessage("Field required min length");
         }
 
@@ -44,9 +44,9 @@ namespace FormBuilder.Core.Domain.Validations.Fields.Texts
             RuleFor(p => p.Value)
                 .Must((response, value) =>
                 {
-                    return response.Field?.MaxLength > 0 && value.Length < response.Field.MaxLength;
+                    return response.FieldBuilder?.MaxLength > 0 && value.Length < response.FieldBuilder.MaxLength;
                 })
-                .When(p => p.Field != null && p.Field.MaxLength != null)
+                .When(p => p.FieldBuilder != null && p.FieldBuilder.MaxLength != null)
                 .WithMessage("Field is required max lenght");
         }
     }

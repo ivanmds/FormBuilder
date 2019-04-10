@@ -9,7 +9,7 @@ namespace FormBuilder.Core.Domain.Models.Fields.Response.Numbers
         protected IntFieldResponse() { }
         public IntFieldResponse(IntFieldBuilder field)
         {
-            Field = field;
+            FieldBuilder = field;
         }
 
         public override ValidationResult Validate()

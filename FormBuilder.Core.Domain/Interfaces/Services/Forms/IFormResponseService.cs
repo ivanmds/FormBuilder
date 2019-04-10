@@ -8,7 +8,7 @@ namespace FormBuilder.Core.Domain.Interfaces.Services.Forms
     {
         Task<FormResponse> GetAsync(int id);
         Task<ValidationResult> AddAsync(FormResponse formResponse);
-        Task<ValidationResult> UpdateAsync(FormResponse formResponse);
-        Task DeleteAsync(int id);
+        ValidationResult Update(FormResponse formResponse);
+        Task RemoveAsync(int id);
     }
 }

@@ -7,7 +7,7 @@ namespace FormBuilder.Core.Domain.Interfaces.Repositories.Forms
     {
         Task<FormResponse> GetAsync(int id);
         Task AddAsync(FormResponse formResponse);
-        Task UpdateAsync(FormResponse formResponse);
-        Task DeleteAsync(int id);
+        void Update(FormResponse formResponse);
+        Task RemoveAsync(int id);
     }
 }
