@@ -2,7 +2,7 @@
 using FormBuilder.Core.Domain.Models.Forms;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace FormBuilder.Core.Data.Map
+namespace FormBuilder.Core.Data.Map.Builder
 {
     public class FormBuildMap : IEntityTypeConfiguration<FormBuild>
     {
