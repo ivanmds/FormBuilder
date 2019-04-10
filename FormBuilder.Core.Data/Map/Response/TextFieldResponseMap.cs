@@ -9,6 +9,14 @@ namespace FormBuilder.Core.Data.Map.Response
         public void Configure(EntityTypeBuilder<TextFieldResponse> builder)
         {
             builder.ToTable("TextFieldResponse");
+
+            builder.HasOne(p => p.Field)
+                .WithMany()
+                .HasForeignKey("FieldBuilderId");
+
+            builder.Property(p => p.Value)
+                .HasColumnName("TextFieldValue")
+                .IsRequired();
         }
     }
 }

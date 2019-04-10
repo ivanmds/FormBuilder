@@ -6,6 +6,7 @@ namespace FormBuilder.Core.Domain.Models.Fields.Response.Numbers
 {
     public class IntFieldResponse : FieldTypeResponse<IntFieldBuilder, int?>
     {
+        protected IntFieldResponse() { }
         public IntFieldResponse(IntFieldBuilder field)
         {
             Field = field;

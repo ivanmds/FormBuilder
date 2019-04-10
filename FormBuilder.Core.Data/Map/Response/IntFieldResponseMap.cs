@@ -9,6 +9,14 @@ namespace FormBuilder.Core.Data.Map.Response
         public void Configure(EntityTypeBuilder<IntFieldResponse> builder)
         {
             builder.ToTable("IntFieldResponse");
+
+            builder.HasOne(p => p.Field)
+                .WithMany()
+                .HasForeignKey("FieldBuilderId");
+
+            builder.Property(p => p.Value)
+                .HasColumnName("IntFieldValue")
+                .IsRequired();
         }
     }
 }

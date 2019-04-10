@@ -6,6 +6,7 @@ namespace FormBuilder.Core.Domain.Models.Fields.Response.Texts
 {
     public class TextFieldResponse : FieldTypeResponse<TextFieldBuilder, string>
     {
+        protected TextFieldResponse() { }
         public TextFieldResponse(TextFieldBuilder field)
         {
             Field = field;
