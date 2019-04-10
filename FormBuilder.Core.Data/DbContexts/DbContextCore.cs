@@ -31,10 +31,10 @@ namespace FormBuilder.Core.Data.DbContexts
             #endregion
 
             #region Responses
-            modelBuilder.ApplyConfiguration(new FormResponseMap());
             modelBuilder.ApplyConfiguration(new BaseFieldResponseMap());
-            modelBuilder.ApplyConfiguration(new IntFieldBuilderMap());
-            modelBuilder.ApplyConfiguration(new TextFieldBuilderMap());
+            modelBuilder.ApplyConfiguration(new IntFieldResponseMap());
+            modelBuilder.ApplyConfiguration(new TextFieldResponseMap());
+            modelBuilder.ApplyConfiguration(new FormResponseMap());
             #endregion
 
             base.OnModelCreating(modelBuilder);
