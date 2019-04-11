@@ -10,11 +10,10 @@ namespace FormBuilder.Core.Data.Map.Response
         {
             builder.ToTable("FormResponse");
             builder.HasKey(p => p.Id);
-            builder.HasOne(p => p.FormBuild);
+            builder.Property(p => p.Id).ValueGeneratedOnAdd();
 
-            builder.HasMany(p => p.Fields)
-                .WithOne()
-                .HasForeignKey(p => p.Id);
+            builder.HasOne(p => p.FormBuild);
+            builder.HasMany(p => p.Fields);
         }
     }
 }

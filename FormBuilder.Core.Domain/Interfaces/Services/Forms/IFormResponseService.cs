@@ -6,7 +6,7 @@ namespace FormBuilder.Core.Domain.Interfaces.Services.Forms
 {
     public interface IFormResponseService
     {
-        Task<FormResponse> GetAsync(int id);
+        Task<FormResponse> FindAsync(int id);
         Task<ValidationResult> AddAsync(FormResponse formResponse);
         ValidationResult Update(FormResponse formResponse);
         Task RemoveAsync(int id);

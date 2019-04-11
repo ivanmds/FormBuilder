@@ -10,10 +10,6 @@ namespace FormBuilder.Core.Data.Map.Response
         {
             builder.ToTable("IntFieldResponse");
 
-            builder.HasOne(p => p.FieldBuilder)
-                .WithMany()
-                .HasForeignKey("FieldBuilderId");
-
             builder.Property(p => p.Value)
                 .HasColumnName("IntFieldValue")
                 .IsRequired();

@@ -9,6 +9,8 @@ namespace FormBuilder.Core.Data.Map.Response
         public void Configure(EntityTypeBuilder<BaseFieldResponse> builder)
         {
             builder.HasKey(p => p.Id);
+            builder.Property(p => p.Id).ValueGeneratedOnAdd();
+            builder.HasOne(p => p.FieldBuild);
         }
     }
 }

@@ -12,7 +12,6 @@ namespace FormBuilder.Core.Domain.Models.Forms.Response
         {
             FormBuild = formBuild;
         }
-
         public FormBuild FormBuild { get; protected set; }
 
         public override ValidationResult Validate()

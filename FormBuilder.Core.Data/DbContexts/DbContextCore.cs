@@ -30,12 +30,12 @@ namespace FormBuilder.Core.Data.DbContexts
             modelBuilder.ApplyConfiguration(new IntFieldBuilderMap());
             #endregion
 
-            #region Responses
+            //#region Responses
             modelBuilder.ApplyConfiguration(new BaseFieldResponseMap());
             modelBuilder.ApplyConfiguration(new IntFieldResponseMap());
             modelBuilder.ApplyConfiguration(new TextFieldResponseMap());
             modelBuilder.ApplyConfiguration(new FormResponseMap());
-            #endregion
+            //#endregion
 
             base.OnModelCreating(modelBuilder);
         }

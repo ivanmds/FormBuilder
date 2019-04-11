@@ -5,6 +5,7 @@ namespace FormBuilder.Core.Domain.Models.Forms
 {
     public class FormBuild : FormBuildBase
     {
+        protected FormBuild() { }
         public FormBuild(string name, DateTime expiredIn)
         {
             Name = name;

@@ -9,6 +9,7 @@ namespace FormBuilder.Core.Data.Map.Builder
         public void Configure(EntityTypeBuilder<BaseFieldBuilder> builder)
         {
             builder.HasKey(p => p.Id);
+            builder.Property(p => p.Id).ValueGeneratedOnAdd();
         }
     }
 }

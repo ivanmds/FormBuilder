@@ -8,8 +8,13 @@ namespace FormBuilder.Core.Data.Map.Builder
     {
         public void Configure(EntityTypeBuilder<FormBuild> builder)
         {
-            builder.ToTable("FormBuilder");
+            builder.ToTable("FormBuild");
             builder.HasKey(p => p.Id);
+            builder.Property(p => p.Id).ValueGeneratedOnAdd();
+
+            builder.Property(p => p.Name)
+                .IsRequired()
+                .HasMaxLength(50);
         }
     }
 }

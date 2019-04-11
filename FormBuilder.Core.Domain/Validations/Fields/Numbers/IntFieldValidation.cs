@@ -1,4 +1,5 @@
 ﻿using FluentValidation;
+using FormBuilder.Core.Domain.Models.Fields.Builder.Numbers;
 using FormBuilder.Core.Domain.Models.Fields.Response.Numbers;
 
 namespace FormBuilder.Core.Domain.Validations.Fields.Numbers
@@ -15,7 +16,7 @@ namespace FormBuilder.Core.Domain.Validations.Fields.Numbers
 
         private void ValidateField()
         {
-            RuleFor(p => p.FieldBuilder)
+            RuleFor(p => p.FieldBuild)
                 .NotNull();
         }
 
@@ -26,7 +27,7 @@ namespace FormBuilder.Core.Domain.Validations.Fields.Numbers
                 {
                     return value.HasValue;
                 })
-                .When(p => p.FieldBuilder != null && p.FieldBuilder.IsRequired == true)
+                .When(p => p.FieldBuild != null && p.FieldBuild.IsRequired == true)
                 .WithMessage("Value is required.");
         }
 
@@ -35,9 +36,10 @@ namespace FormBuilder.Core.Domain.Validations.Fields.Numbers
             RuleFor(p => p.Value)
                 .Must((response, value) =>
                 {
-                    return value >= response.FieldBuilder.MinValue.Value;
+                    IntFieldBuilder fieldBuilder = response.GetFieldBuilder();
+                    return value >= fieldBuilder?.MinValue.Value;
                 })
-                .When(p => p.FieldBuilder != null && p.FieldBuilder.MinValue != null)
+                .When(p => p.FieldBuild != null && p.GetFieldBuilder()?.MinValue != null)
                 .WithMessage("Min value is required.");
         }
 
@@ -46,9 +48,10 @@ namespace FormBuilder.Core.Domain.Validations.Fields.Numbers
             RuleFor(p => p.Value)
                 .Must((response, value) =>
                 {
-                    return value <= response.FieldBuilder.MaxValue.Value;
+                    IntFieldBuilder fieldBuilder = response.GetFieldBuilder();
+                    return value <= fieldBuilder?.MaxValue.Value;
                 })
-                .When(p => p.FieldBuilder != null && p.FieldBuilder.MaxValue != null)
+                .When(p => p.FieldBuild != null && p.GetFieldBuilder()?.MaxValue != null)
                 .WithMessage("Max value is required.");
         }
     }

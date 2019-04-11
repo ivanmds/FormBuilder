@@ -9,7 +9,7 @@ namespace FormBuilder.Core.Domain.Models.Fields.Response.Texts
         protected TextFieldResponse() { }
         public TextFieldResponse(TextFieldBuilder field)
         {
-            FieldBuilder = field;
+            FieldBuild = field;
         }
 
         public override void SetValue(string value)

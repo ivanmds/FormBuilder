@@ -1,4 +1,5 @@
 ﻿using FluentValidation;
+using FormBuilder.Core.Domain.Models.Fields.Builder.Texts;
 using FormBuilder.Core.Domain.Models.Fields.Response.Texts;
 
 namespace FormBuilder.Core.Domain.Validations.Fields.Texts
@@ -15,7 +16,7 @@ namespace FormBuilder.Core.Domain.Validations.Fields.Texts
 
         private void ValidateField()
         {
-            RuleFor(p => p.FieldBuilder)
+            RuleFor(p => p.FieldBuild)
                 .NotNull();
         }
         private void ValidateIsRequired()
@@ -24,7 +25,7 @@ namespace FormBuilder.Core.Domain.Validations.Fields.Texts
                .Must((response, value) => {
                    return !string.IsNullOrEmpty(value);
                })
-               .When(p => p.FieldBuilder != null && p.FieldBuilder.IsRequired == true)
+               .When(p => p.FieldBuild != null && p.FieldBuild.IsRequired == true)
                .WithMessage("Field is required");
         }
 
@@ -33,9 +34,11 @@ namespace FormBuilder.Core.Domain.Validations.Fields.Texts
             RuleFor(p => p.Value)
                 .Must((response, value) =>
                 {
-                    return response.FieldBuilder?.MinLength > 0 && value.Length >= response.FieldBuilder.MinLength.Value;
+                    TextFieldBuilder fieldBuilder = response.GetFieldBuilder();
+
+                    return fieldBuilder?.MinLength > 0 && value.Length >= fieldBuilder?.MinLength.Value;
                 })
-                .When(p => p.FieldBuilder != null && p.FieldBuilder.MinLength != null)
+                .When(p => p.FieldBuild != null && p.GetFieldBuilder()?.MinLength != null)
                 .WithMessage("Field required min length");
         }
 
@@ -44,9 +47,10 @@ namespace FormBuilder.Core.Domain.Validations.Fields.Texts
             RuleFor(p => p.Value)
                 .Must((response, value) =>
                 {
-                    return response.FieldBuilder?.MaxLength > 0 && value.Length < response.FieldBuilder.MaxLength;
+                    TextFieldBuilder fieldBuilder = response.GetFieldBuilder();
+                    return fieldBuilder?.MaxLength > 0 && value.Length < fieldBuilder?.MaxLength;
                 })
-                .When(p => p.FieldBuilder != null && p.FieldBuilder.MaxLength != null)
+                .When(p => p.FieldBuild != null && p.GetFieldBuilder()?.MaxLength != null)
                 .WithMessage("Field is required max lenght");
         }
     }

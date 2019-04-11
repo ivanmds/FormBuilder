@@ -15,9 +15,9 @@ namespace FormBuilder.Core.Domain.Services.Forms
             _repository = repository;
         }
 
-        public async Task<FormResponse> GetAsync(int id)
+        public async Task<FormResponse> FindAsync(int id)
         {
-            return await _repository.GetAsync(id);
+            return await _repository.FindAsync(id);
         }
 
         public async Task<ValidationResult> AddAsync(FormResponse formResponse)

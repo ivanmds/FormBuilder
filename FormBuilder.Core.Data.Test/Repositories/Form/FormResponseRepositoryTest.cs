@@ -9,6 +9,9 @@ using FormBuilder.Core.Data.DbContexts;
 using FormBuilder.Core.Data.Repositories.Forms;
 using FormBuilder.Core.Domain.Models.Fields.Builder.Numbers;
 using FormBuilder.Core.Domain.Models.Fields.Response.Numbers;
+using FormBuilder.Core.Domain.Models.Fields.Builder.Texts;
+using FormBuilder.Core.Domain.Models.Fields.Response.Texts;
+using System.Linq;
 
 namespace FormBuilder.Core.Data.Test.Repositories.Form
 {
@@ -61,6 +64,98 @@ namespace FormBuilder.Core.Data.Test.Repositories.Form
 
             //assert
             Assert.True(intFieldResponse.Id > 0);
+        }
+
+        [Fact]
+        public async Task FormResponseRepository_RespondFormMultiplesFields_Success()
+        {
+            //arrange
+            FormBuild formBuild = new FormBuild("Test", DateTime.Now);
+            IntFieldBuilder intField = new IntFieldBuilder("age", 5, 10, true);
+            TextFieldBuilder textField = new TextFieldBuilder("name");
+
+            formBuild.AddField(intField);
+            formBuild.AddField(textField);
+            
+            FormResponse formResponse = new FormResponse(formBuild);
+
+            IntFieldResponse intFieldResponse = new IntFieldResponse(intField);
+            intFieldResponse.SetValue(10);
+            formResponse.AddField(intFieldResponse);
+
+            TextFieldResponse textFieldResponse = new TextFieldResponse(textField);
+            textFieldResponse.SetValue("Maria");
+            formResponse.AddField(textFieldResponse);
+
+            //act
+            await _repository.AddAsync(formResponse);
+            await _unitOfWork.SaveChangesAsync();
+
+            //assert
+            Assert.True(intFieldResponse.Id > 0);
+        }
+
+        [Fact]
+        public async Task FormResponseRepository_UpdateValueResponse_Success()
+        {
+            //arrange
+            FormBuild formBuild = new FormBuild("Teste", DateTime.Now);
+            IntFieldBuilder intField = new IntFieldBuilder("value_test", 5, 10, true);
+            formBuild.AddField(intField);
+
+            FormResponse formResponse = new FormResponse(formBuild);
+            IntFieldResponse intFieldResponse = new IntFieldResponse(intField);
+            intFieldResponse.SetValue(10);
+            formResponse.AddField(intFieldResponse);
+
+            await _repository.AddAsync(formResponse);
+            await _unitOfWork.SaveChangesAsync();
+            int setNewValue = 5;
+
+            //act
+            FormResponse formResponseFound = await _repository.FindAsync(formResponse.Id);
+            IntFieldResponse intFieldResponseFound = null;
+            if (formResponseFound != null && formResponseFound.Fields?.Count > 0)
+            {
+                intFieldResponseFound = formResponseFound.Fields.First() as IntFieldResponse;
+                intFieldResponseFound.SetValue(setNewValue);
+                await _unitOfWork.SaveChangesAsync();
+
+                formResponseFound = await _repository.FindAsync(formResponse.Id);
+                intFieldResponseFound = formResponseFound.Fields.First() as IntFieldResponse;
+            }
+
+            //assert
+            Assert.NotNull(formResponseFound);
+            Assert.True(formResponseFound.Fields?.Count == formResponse.Fields?.Count);
+            Assert.True(intFieldResponseFound.Value == setNewValue);
+        }
+
+        [Fact]
+        public async Task FormResponseRepository_DeleteFormResponse_Success()
+        {
+            //arrange
+            FormBuild formBuild = new FormBuild("Teste", DateTime.Now);
+            IntFieldBuilder intField = new IntFieldBuilder("value_test", 5, 10, true);
+            formBuild.AddField(intField);
+
+            FormResponse formResponse = new FormResponse(formBuild);
+            IntFieldResponse intFieldResponse = new IntFieldResponse(intField);
+            intFieldResponse.SetValue(10);
+            formResponse.AddField(intFieldResponse);
+
+            await _repository.AddAsync(formResponse);
+            await _unitOfWork.SaveChangesAsync();
+            int formResponseId = formResponse.Id;
+
+            //act
+            await _repository.RemoveAsync(formResponseId);
+            await _unitOfWork.SaveChangesAsync();
+
+            FormResponse formResponseNotFound = await _repository.FindAsync(formResponseId);
+
+            //assert
+            Assert.Null(formResponseNotFound);
         }
 
         public void Dispose()
