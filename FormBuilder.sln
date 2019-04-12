@@ -19,7 +19,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{12816AED-928D-
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FormBuilder.Angular", "FormBuilder.Angular\FormBuilder.Angular.csproj", "{22872F4B-CD10-46D7-9106-09C2BAD2C446}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormBuilder.Core.Data.Test", "FormBuilder.Core.Data.Test\FormBuilder.Core.Data.Test.csproj", "{83D6F6B2-BC93-40A8-B9C4-50A0C6CAC960}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FormBuilder.Core.Data.Test", "FormBuilder.Core.Data.Test\FormBuilder.Core.Data.Test.csproj", "{83D6F6B2-BC93-40A8-B9C4-50A0C6CAC960}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{A95F9B14-5C2F-4124-8C4C-4B88AC37CA1E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormBuilder.Core.Application", "FormBuilder.Core.Application\FormBuilder.Core.Application.csproj", "{0823F88A-6D91-45EC-9E2A-73EE5B817D1A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,6 +51,10 @@ Global
 		{83D6F6B2-BC93-40A8-B9C4-50A0C6CAC960}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{83D6F6B2-BC93-40A8-B9C4-50A0C6CAC960}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{83D6F6B2-BC93-40A8-B9C4-50A0C6CAC960}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0823F88A-6D91-45EC-9E2A-73EE5B817D1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0823F88A-6D91-45EC-9E2A-73EE5B817D1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0823F88A-6D91-45EC-9E2A-73EE5B817D1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0823F88A-6D91-45EC-9E2A-73EE5B817D1A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -59,6 +67,8 @@ Global
 		{E053A8D3-44C4-4B7B-A788-CAE982EEDE2C} = {55EFB61E-3005-47E8-88E0-9AA80523CCE0}
 		{22872F4B-CD10-46D7-9106-09C2BAD2C446} = {12816AED-928D-4E7F-A8FB-0A1297E9EBE6}
 		{83D6F6B2-BC93-40A8-B9C4-50A0C6CAC960} = {55EFB61E-3005-47E8-88E0-9AA80523CCE0}
+		{A95F9B14-5C2F-4124-8C4C-4B88AC37CA1E} = {F7DD4955-4C72-49B8-A2B5-F180BF47CD06}
+		{0823F88A-6D91-45EC-9E2A-73EE5B817D1A} = {A95F9B14-5C2F-4124-8C4C-4B88AC37CA1E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C605085B-E87D-4971-AF76-DEBFF4CAE440}

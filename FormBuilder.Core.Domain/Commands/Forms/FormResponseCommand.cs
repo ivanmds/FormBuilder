@@ -1,23 +1,18 @@
 ﻿using System.Threading.Tasks;
 using FluentValidation.Results;
 using FormBuilder.Core.Domain.Interfaces.Repositories.Forms;
-using FormBuilder.Core.Domain.Interfaces.Services.Forms;
+using FormBuilder.Core.Domain.Interfaces.Commands.Forms;
 using FormBuilder.Core.Domain.Models.Forms.Response;
 
-namespace FormBuilder.Core.Domain.Services.Forms
+namespace FormBuilder.Core.Domain.Commands.Forms
 {
-    public class FormResponseService : IFormResponseService
+    public class FormResponseCommand : IFormResponseCommand
     {
         private readonly IFormResponseRepository _repository;
 
-        public FormResponseService(IFormResponseRepository repository)
+        public FormResponseCommand(IFormResponseRepository repository)
         {
             _repository = repository;
-        }
-
-        public async Task<FormResponse> FindAsync(int id)
-        {
-            return await _repository.FindAsync(id);
         }
 
         public async Task<ValidationResult> AddAsync(FormResponse formResponse)

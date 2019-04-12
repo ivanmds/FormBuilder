@@ -1,22 +1,18 @@
 ﻿using System.Threading.Tasks;
 using FormBuilder.Core.Domain.Models.Forms;
 using FormBuilder.Core.Domain.Interfaces.Repositories.Forms;
-using FormBuilder.Core.Domain.Interfaces.Services.Forms;
+using FormBuilder.Core.Domain.Interfaces.Commands.Forms;
 
-namespace FormBuilder.Core.Domain.Services.Forms
+namespace FormBuilder.Core.Domain.Commands.Forms
 {
-    public class FormBuildService : IFormBuildService
+    public class FormBuildCommand : IFormBuildCommand
     {
         private readonly IFormBuildRepository _repository;
-        public FormBuildService(IFormBuildRepository repository)
+        public FormBuildCommand(IFormBuildRepository repository)
         {
             _repository = repository;
         }
 
-        public async Task<FormBuild> FindAsync(int id)
-        {
-            return await _repository.FindAsync(id);
-        }
         public async Task AddAsync(FormBuild formBuild)
         {
             await _repository.AddAsync(formBuild);

@@ -2,11 +2,10 @@
 using FormBuilder.Core.Domain.Models.Forms.Response;
 using System.Threading.Tasks;
 
-namespace FormBuilder.Core.Domain.Interfaces.Services.Forms
+namespace FormBuilder.Core.Domain.Interfaces.Commands.Forms
 {
-    public interface IFormResponseService
+    public interface IFormResponseCommand
     {
-        Task<FormResponse> FindAsync(int id);
         Task<ValidationResult> AddAsync(FormResponse formResponse);
         ValidationResult Update(FormResponse formResponse);
         Task RemoveAsync(int id);

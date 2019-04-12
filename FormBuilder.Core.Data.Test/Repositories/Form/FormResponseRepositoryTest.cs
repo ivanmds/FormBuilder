@@ -113,7 +113,7 @@ namespace FormBuilder.Core.Data.Test.Repositories.Form
             int setNewValue = 5;
 
             //act
-            FormResponse formResponseFound = await _repository.FindAsync(formResponse.Id);
+            FormResponse formResponseFound = await _dbContext.FormResponses.FindAsync(formResponse.Id);
             IntFieldResponse intFieldResponseFound = null;
             if (formResponseFound != null && formResponseFound.Fields?.Count > 0)
             {
@@ -121,7 +121,7 @@ namespace FormBuilder.Core.Data.Test.Repositories.Form
                 intFieldResponseFound.SetValue(setNewValue);
                 await _unitOfWork.SaveChangesAsync();
 
-                formResponseFound = await _repository.FindAsync(formResponse.Id);
+                formResponseFound = await _dbContext.FormResponses.FindAsync(formResponse.Id);
                 intFieldResponseFound = formResponseFound.Fields.First() as IntFieldResponse;
             }
 
@@ -152,7 +152,7 @@ namespace FormBuilder.Core.Data.Test.Repositories.Form
             await _repository.RemoveAsync(formResponseId);
             await _unitOfWork.SaveChangesAsync();
 
-            FormResponse formResponseNotFound = await _repository.FindAsync(formResponseId);
+            FormResponse formResponseNotFound = await _dbContext.FormResponses.FindAsync(formResponseId);
 
             //assert
             Assert.Null(formResponseNotFound);

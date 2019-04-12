@@ -47,7 +47,7 @@ namespace FormBuilder.Core.Data.Test.Repositories.Form
             await _unitOfWork.SaveChangesAsync();
 
             //act
-            FormBuild formBuildFind = await _repository.FindAsync(formBuild.Id);
+            FormBuild formBuildFind = await _dbContext.FormBuilds.FindAsync(formBuild.Id);
 
             //assert
             Assert.NotNull(formBuildFind);
@@ -65,7 +65,7 @@ namespace FormBuilder.Core.Data.Test.Repositories.Form
             //act
             _repository.Update(formBuild);
             await _unitOfWork.SaveChangesAsync();
-            FormBuild formUpdated = await _repository.FindAsync(formBuild.Id);
+            FormBuild formUpdated = await _dbContext.FormBuilds.FindAsync(formBuild.Id);
 
             //assert
             Assert.Equal(formUpdated.Id, formBuild.Id);
@@ -83,7 +83,7 @@ namespace FormBuilder.Core.Data.Test.Repositories.Form
             //act
             await _repository.RemoveAsync(formBuild.Id);
             await _unitOfWork.SaveChangesAsync();
-            FormBuild formRemoved = await _repository.FindAsync(formBuild.Id);
+            FormBuild formRemoved = await _dbContext.FormBuilds.FindAsync(formBuild.Id);
 
             //assert
             Assert.Null(formRemoved);
@@ -100,7 +100,7 @@ namespace FormBuilder.Core.Data.Test.Repositories.Form
 
             //act
             await _unitOfWork.SaveChangesAsync();
-            FormBuild formSaved = await _repository.FindAsync(formBuild.Id);
+            FormBuild formSaved = await _dbContext.FormBuilds.FindAsync(formBuild.Id);
 
             //assert
             Assert.NotNull(formSaved);
@@ -120,7 +120,7 @@ namespace FormBuilder.Core.Data.Test.Repositories.Form
 
             //act
             await _unitOfWork.SaveChangesAsync();
-            FormBuild formSaved = await _repository.FindAsync(formBuild.Id);
+            FormBuild formSaved = await _dbContext.FormBuilds.FindAsync(formBuild.Id);
 
             //assert
             Assert.NotNull(formSaved);

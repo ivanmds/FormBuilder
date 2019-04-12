@@ -14,11 +14,6 @@ namespace FormBuilder.Core.Data.Repositories.Forms
             _dbContext = dbContext;
         }
 
-        public async Task<FormBuild> FindAsync(int id)
-        {
-            return await _dbContext.FormBuilds.FindAsync(id);
-        }
-
         public async Task AddAsync(FormBuild fBuilder)
         {
             await _dbContext.FormBuilds.AddAsync(fBuilder);
@@ -31,7 +26,7 @@ namespace FormBuilder.Core.Data.Repositories.Forms
 
         public async Task RemoveAsync(int id)
         {
-            FormBuild formBuild = await FindAsync(id);
+            FormBuild formBuild = await _dbContext.FormBuilds.FindAsync(id);
             _dbContext.FormBuilds.Remove(formBuild);
         }
     }
