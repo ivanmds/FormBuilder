@@ -1,14 +1,14 @@
 ﻿using System.Threading.Tasks;
 using FormBuilder.Core.Domain.Models.Forms;
 using FormBuilder.Core.Domain.Interfaces.Repositories.Forms;
-using FormBuilder.Core.Domain.Interfaces.Commands.Forms;
+using FormBuilder.Core.Domain.Interfaces.Services.Forms;
 
-namespace FormBuilder.Core.Domain.Commands.Forms
+namespace FormBuilder.Core.Domain.Services.Forms
 {
-    public class FormBuildCommand : IFormBuildCommand
+    public class FormBuildService : IFormBuildService
     {
         private readonly IFormBuildRepository _repository;
-        public FormBuildCommand(IFormBuildRepository repository)
+        public FormBuildService(IFormBuildRepository repository)
         {
             _repository = repository;
         }

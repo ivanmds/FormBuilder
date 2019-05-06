@@ -3,7 +3,7 @@ using System;
 using NSubstitute;
 using System.Threading.Tasks;
 using FluentValidation.Results;
-using FormBuilder.Core.Domain.Commands.Forms;
+using FormBuilder.Core.Domain.Services.Forms;
 using FormBuilder.Core.Domain.Models.Forms.Response;
 using FormBuilder.Core.Domain.Interfaces.Repositories.Forms;
 using FormBuilder.Core.Domain.Models.Fields.Builder.Numbers;
@@ -14,15 +14,15 @@ using FormBuilder.Core.Domain.Models.Fields.Response.Numbers;
 
 namespace FormBuilder.Core.Domain.Test.Models.Services
 {
-    public class FormResponseCommandTest
+    public class FormResponseServiceTest
     {
-        private FormResponseCommand _service;
+        private FormResponseService _service;
         private IFormResponseRepository _repository;
 
-        public FormResponseCommandTest()
+        public FormResponseServiceTest()
         {
             _repository = Substitute.For<IFormResponseRepository>();
-            _service = new FormResponseCommand(_repository);
+            _service = new FormResponseService(_repository);
         }
 
         [Fact]

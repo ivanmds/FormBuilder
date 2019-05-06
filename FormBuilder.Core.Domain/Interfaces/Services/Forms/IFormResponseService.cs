@@ -2,9 +2,9 @@
 using FormBuilder.Core.Domain.Models.Forms.Response;
 using System.Threading.Tasks;
 
-namespace FormBuilder.Core.Domain.Interfaces.Commands.Forms
+namespace FormBuilder.Core.Domain.Interfaces.Services.Forms
 {
-    public interface IFormResponseCommand
+    public interface IFormResponseService
     {
         Task<ValidationResult> AddAsync(FormResponse formResponse);
         ValidationResult Update(FormResponse formResponse);

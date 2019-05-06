@@ -1,16 +1,16 @@
 ﻿using System.Threading.Tasks;
 using FluentValidation.Results;
 using FormBuilder.Core.Domain.Interfaces.Repositories.Forms;
-using FormBuilder.Core.Domain.Interfaces.Commands.Forms;
+using FormBuilder.Core.Domain.Interfaces.Services.Forms;
 using FormBuilder.Core.Domain.Models.Forms.Response;
 
-namespace FormBuilder.Core.Domain.Commands.Forms
+namespace FormBuilder.Core.Domain.Services.Forms
 {
-    public class FormResponseCommand : IFormResponseCommand
+    public class FormResponseService : IFormResponseService
     {
         private readonly IFormResponseRepository _repository;
 
-        public FormResponseCommand(IFormResponseRepository repository)
+        public FormResponseService(IFormResponseRepository repository)
         {
             _repository = repository;
         }
