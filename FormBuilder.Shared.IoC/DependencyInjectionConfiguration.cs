@@ -1,4 +1,6 @@
-﻿using FormBuilder.Core.Data.DbContexts;
+﻿using FormBuilder.Core.Application.AppService;
+using FormBuilder.Core.Application.AppService.Interfaces;
+using FormBuilder.Core.Data.DbContexts;
 using FormBuilder.Core.Data.Repositories.Forms;
 using FormBuilder.Core.Domain.Interfaces.Repositories.Forms;
 using FormBuilder.Core.Domain.Interfaces.Services.Forms;
@@ -18,6 +20,8 @@ namespace FormBuilder.Shared.IoC
 
             services.AddTransient<IFormBuildRepository, FormBuildRepository>();
             services.AddTransient<IFormResponseRepository, FormResponseRepository>();
+
+            services.AddTransient<IFormBuildQueryAppService, FormBuildQueryAppService>();
         }
     }
 }

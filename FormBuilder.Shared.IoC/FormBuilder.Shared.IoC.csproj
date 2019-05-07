@@ -10,6 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\FormBuilder.Core.Application\FormBuilder.Core.Application.csproj" />
     <ProjectReference Include="..\FormBuilder.Core.Data\FormBuilder.Core.Data.csproj" />
   </ItemGroup>
 
