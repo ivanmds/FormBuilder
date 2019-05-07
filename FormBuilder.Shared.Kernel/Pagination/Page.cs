@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace FormBuilder.Shared.Kernel.Pagination
 {
-    public class Page<TEntity> where TEntity : EntityBase
+    public class Page<TEntity>
     {
         public Page(IEnumerable<TEntity> data, int total)
         {
