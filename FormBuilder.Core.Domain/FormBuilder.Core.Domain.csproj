@@ -12,4 +12,8 @@
     <Folder Include="Validations\Forms\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\FormBuilder.Shared.Kernel\FormBuilder.Shared.Kernel.csproj" />
+  </ItemGroup>
+
 </Project>
