@@ -6,7 +6,7 @@ using FormBuilder.Shared.Kernel.Model;
 
 namespace FormBuilder.Core.Domain.Models.Forms.Response
 {
-    public abstract class FormResponseBase : BaseEntity,  IValidable
+    public abstract class FormResponseBase : EntityBase,  IValidable
     {
         private List<BaseFieldResponse> _fields = new List<BaseFieldResponse>();
         public IReadOnlyCollection<BaseFieldResponse> Fields => _fields;

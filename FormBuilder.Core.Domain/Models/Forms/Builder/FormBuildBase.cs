@@ -5,7 +5,7 @@ using FormBuilder.Shared.Kernel.Model;
 
 namespace FormBuilder.Core.Domain.Models.Forms.Builder
 {
-    public abstract class FormBuildBase : BaseEntity
+    public abstract class FormBuildBase : EntityBase
     {
         public string Name { get; protected set; }
         public DateTime ExpiredIn { get; protected set; }
