@@ -2,13 +2,12 @@
 using System.Collections.Generic;
 using FormBuilder.Core.Domain.Interfaces.Validation;
 using FormBuilder.Core.Domain.Models.Fields.Response;
+using FormBuilder.Shared.Kernel.Model;
 
 namespace FormBuilder.Core.Domain.Models.Forms.Response
 {
-    public abstract class FormResponseBase :  IValidable
+    public abstract class FormResponseBase : BaseEntity,  IValidable
     {
-        public int Id { get; protected set; }
-
         private List<BaseFieldResponse> _fields = new List<BaseFieldResponse>();
         public IReadOnlyCollection<BaseFieldResponse> Fields => _fields;
 

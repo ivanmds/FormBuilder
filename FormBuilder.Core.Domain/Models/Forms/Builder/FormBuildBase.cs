@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using FormBuilder.Core.Domain.Models.Fields.Builder;
+using FormBuilder.Shared.Kernel.Model;
 
 namespace FormBuilder.Core.Domain.Models.Forms.Builder
 {
-    public abstract class FormBuildBase
+    public abstract class FormBuildBase : BaseEntity
     {
-        public int Id { get; protected set; }
         public string Name { get; protected set; }
         public DateTime ExpiredIn { get; protected set; }
         public bool IsActive => ExpiredIn > DateTime.Now;
